@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+    ports:
+      - "5432:5432"
+    networks:
+      - booking_service_network
+
+  service:
+    container_name: booking_service
+    build: .
+    environment:
+      RABBITMQ_URL: "amqp://user:pass@rabbitmq:5672/"
+    ports:
+      - "8081:8081"
+      - "50050:50050"
+    depends_on:
+      - postgres
+      - rabbitmq
+    volumes:
+      - .:/app
+    command: ["./server"]
+    networks:
+      - booking_service_network
+      - booking_consul_network
+
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: booking_service_rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"  # UI
+    environment:
+      RABBITMQ_DEFAULT_USER: user
+      RABBITMQ_DEFAULT_PASS: pass
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmqctl", "status"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - booking_service_network
+      - rabbitmq_network
+
+volumes:
+  rabbitmq_data:
+    driver: local
+
+networks:
+  booking_service_network:
+    driver: bridge
+  booking_consul_network:
+    external: true
+  rabbitmq_network:
+    external: true

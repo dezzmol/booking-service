@@ -1,0 +1,1023 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "booking_service.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "BookingService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/booking": {
+      "put": {
+        "operationId": "BookingService_CreateBooking",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/booking_serviceCreateBookingResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/booking_serviceCreateBookingRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BookingService"
+        ]
+      }
+    },
+    "/v1/booking/{bookingId}": {
+      "delete": {
+        "operationId": "BookingService_CancelBooking",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/booking_serviceCancelBookingResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bookingId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "BookingService"
+        ]
+      },
+      "put": {
+        "operationId": "BookingService_ModifyBooking",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/booking_serviceModifyBookingResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bookingId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BookingServiceModifyBookingBody"
+            }
+          }
+        ],
+        "tags": [
+          "BookingService"
+        ]
+      }
+    },
+    "/v1/booking/{bookingId}/guests": {
+      "get": {
+        "operationId": "BookingService_GetGuestsByBookingID",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/booking_serviceGetGuestsByBookingIDResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bookingId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "BookingService"
+        ]
+      }
+    },
+    "/v1/employee": {
+      "post": {
+        "operationId": "BookingService_AddEmployee",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/booking_serviceAddEmployeeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/booking_serviceAddEmployeeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BookingService"
+        ]
+      }
+    },
+    "/v1/employee/{employeeId}": {
+      "get": {
+        "operationId": "BookingService_GetEmployee",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/booking_serviceGetEmployeeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "employeeId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "BookingService"
+        ]
+      },
+      "put": {
+        "operationId": "BookingService_UpdateEmployee",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/booking_serviceUpdateEmployeeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "employeeId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BookingServiceUpdateEmployeeBody"
+            }
+          }
+        ],
+        "tags": [
+          "BookingService"
+        ]
+      }
+    },
+    "/v1/guests": {
+      "post": {
+        "operationId": "BookingService_CreateGuest",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/booking_serviceCreateGuestResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/booking_serviceCreateGuestRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BookingService"
+        ]
+      }
+    },
+    "/v1/housekeeping": {
+      "post": {
+        "operationId": "BookingService_CreateHouseKeepingRequest",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/booking_serviceCreateHouseKeepingRequestResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/booking_serviceCreateHouseKeepingRequestRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BookingService"
+        ]
+      }
+    },
+    "/v1/housekeeping/assign": {
+      "post": {
+        "operationId": "BookingService_AssignEmployee",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/booking_serviceAssignEmployeeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/booking_serviceAssignEmployeeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BookingService"
+        ]
+      }
+    },
+    "/v1/review": {
+      "post": {
+        "operationId": "BookingService_SubmitReview",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/booking_serviceSubmitReviewResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/booking_serviceSubmitReviewRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BookingService"
+        ]
+      }
+    },
+    "/v1/room": {
+      "post": {
+        "operationId": "BookingService_CreateRoom",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/booking_serviceVoidResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/booking_serviceCreateRoomRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BookingService"
+        ]
+      },
+      "put": {
+        "operationId": "BookingService_UpdateRoom",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/booking_serviceUpdateRoomResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/booking_serviceUpdateRoomRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BookingService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "BookingServiceModifyBookingBody": {
+      "type": "object",
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "BookingServiceUpdateEmployeeBody": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        }
+      }
+    },
+    "booking_serviceAddEmployeeRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        }
+      }
+    },
+    "booking_serviceAddEmployeeResponse": {
+      "type": "object",
+      "properties": {
+        "employee": {
+          "$ref": "#/definitions/booking_serviceEmployee"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/booking_serviceBookingServiceLink"
+          }
+        }
+      }
+    },
+    "booking_serviceAssignEmployeeRequest": {
+      "type": "object",
+      "properties": {
+        "requestId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "employeeId": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "booking_serviceAssignEmployeeResponse": {
+      "type": "object",
+      "properties": {
+        "request": {
+          "$ref": "#/definitions/booking_serviceHousekeepingRequest"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/booking_serviceBookingServiceLink"
+          }
+        }
+      }
+    },
+    "booking_serviceBooking": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "roomId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "paymentStatus": {
+          "type": "string"
+        },
+        "guests": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/booking_serviceGuest"
+          }
+        }
+      }
+    },
+    "booking_serviceBookingServiceLink": {
+      "type": "object",
+      "properties": {
+        "rel": {
+          "type": "string"
+        },
+        "href": {
+          "type": "string"
+        },
+        "method": {
+          "type": "string"
+        }
+      }
+    },
+    "booking_serviceCancelBookingResponse": {
+      "type": "object",
+      "properties": {
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/booking_serviceBookingServiceLink"
+          }
+        }
+      }
+    },
+    "booking_serviceCreateBookingRequest": {
+      "type": "object",
+      "properties": {
+        "roomId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "guests": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/booking_serviceGuestDTO"
+          }
+        }
+      }
+    },
+    "booking_serviceCreateBookingResponse": {
+      "type": "object",
+      "properties": {
+        "booking": {
+          "$ref": "#/definitions/booking_serviceBooking"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/booking_serviceBookingServiceLink"
+          }
+        }
+      }
+    },
+    "booking_serviceCreateGuestRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "booking_serviceCreateGuestResponse": {
+      "type": "object",
+      "properties": {
+        "guest": {
+          "$ref": "#/definitions/booking_serviceGuest"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/booking_serviceBookingServiceLink"
+          }
+        }
+      }
+    },
+    "booking_serviceCreateHouseKeepingRequestRequest": {
+      "type": "object",
+      "properties": {
+        "roomId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "requestTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "booking_serviceCreateHouseKeepingRequestResponse": {
+      "type": "object",
+      "properties": {
+        "request": {
+          "$ref": "#/definitions/booking_serviceHousekeepingRequest"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/booking_serviceBookingServiceLink"
+          }
+        }
+      }
+    },
+    "booking_serviceCreateRoomRequest": {
+      "type": "object",
+      "properties": {
+        "rooms": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/booking_serviceRoomDTO"
+          }
+        }
+      }
+    },
+    "booking_serviceEmployee": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "name": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        }
+      }
+    },
+    "booking_serviceGetEmployeeResponse": {
+      "type": "object",
+      "properties": {
+        "employee": {
+          "$ref": "#/definitions/booking_serviceEmployee"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/booking_serviceBookingServiceLink"
+          }
+        }
+      }
+    },
+    "booking_serviceGetGuestsByBookingIDResponse": {
+      "type": "object",
+      "properties": {
+        "guests": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/booking_serviceGuest"
+          }
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/booking_serviceBookingServiceLink"
+          }
+        }
+      }
+    },
+    "booking_serviceGuest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "booking_serviceGuestDTO": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "booking_serviceHousekeepingRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "roomId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "requestTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "booking_serviceModifyBookingResponse": {
+      "type": "object",
+      "properties": {
+        "booking": {
+          "$ref": "#/definitions/booking_serviceBooking"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/booking_serviceBookingServiceLink"
+          }
+        }
+      }
+    },
+    "booking_serviceReview": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "bookingId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "guestId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "rating": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "comment": {
+          "type": "string"
+        }
+      }
+    },
+    "booking_serviceRoom": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "number": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "hotelId": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "booking_serviceRoomDTO": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "hotelId": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "booking_serviceSubmitReviewRequest": {
+      "type": "object",
+      "properties": {
+        "bookingId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "guestId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "rating": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "comment": {
+          "type": "string"
+        }
+      }
+    },
+    "booking_serviceSubmitReviewResponse": {
+      "type": "object",
+      "properties": {
+        "review": {
+          "$ref": "#/definitions/booking_serviceReview"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/booking_serviceBookingServiceLink"
+          }
+        }
+      }
+    },
+    "booking_serviceUpdateEmployeeResponse": {
+      "type": "object",
+      "properties": {
+        "employee": {
+          "$ref": "#/definitions/booking_serviceEmployee"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/booking_serviceBookingServiceLink"
+          }
+        }
+      }
+    },
+    "booking_serviceUpdateRoomRequest": {
+      "type": "object",
+      "properties": {
+        "roomId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "number": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "hotelId": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "booking_serviceUpdateRoomResponse": {
+      "type": "object",
+      "properties": {
+        "room": {
+          "$ref": "#/definitions/booking_serviceRoom"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/booking_serviceBookingServiceLink"
+          }
+        }
+      }
+    },
+    "booking_serviceVoidResponse": {
+      "type": "object",
+      "properties": {
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/booking_serviceBookingServiceLink"
+          }
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

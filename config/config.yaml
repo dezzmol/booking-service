@@ -1,0 +1,25 @@
+application:
+  host: "localhost"
+  port: "8081"
+  grpc:
+    port: "50051"
+db:
+  host: "localhost"
+  name: "db"
+  port: "5432"
+  user: "user"
+  password: "pass"
+clients:
+  notification_client:
+    host: "localhost"
+    port: "8083"
+    grpc:
+      port: "50053"
+  payment_client:
+    host: "localhost"
+    port: "8082"
+    grpc:
+      port: "50052"
+consul:
+  host: "localhost"
+  port: "8500"
