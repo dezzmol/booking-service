@@ -5,7 +5,7 @@ import "google/protobuf/timestamp.proto";
 
 option go_package = "booking-service/internal/generated";
 
-package hotel_booking_service.booking_service;
+package booking_service;
 
 service BookingService {
   rpc CreateRoom(CreateRoomRequest) returns (VoidResponse){

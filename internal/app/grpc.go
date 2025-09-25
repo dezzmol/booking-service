@@ -12,7 +12,7 @@ import (
 
 func (a *Application) initGRPC() {
 	s := grpc.NewServer()
-	generated.RegisterBookingServiceServer(s, a.handlers.booking)
+	generated.RegisterBookingServiceServer(s, a.Handlers.booking)
 	lis, err := net.Listen("tcp", fmt.Sprintf("%s:%s", a.config.app.Host, a.config.app.Grpc.Port))
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)

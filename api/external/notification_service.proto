@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option go_package = "booking-service/internal/generated;generated";
+
+package notification;
+
+import "external/notification_models.proto";
+import "google/api/annotations.proto";
+
+service NotificationService {
+  rpc SendNotification(NotificationDTO) returns (Response) {
+    option (google.api.http) = {
+      post: "/v1/notification"
+      body: "*"
+    };
+  }
+}
+
+message Response {
+  bool success = 1;
+  optional string error_message = 2;
+  repeated NotificationLink links = 3;
+}
+
+message NotificationLink {
+  string rel = 1;
+  string href = 2;
+  string method = 3;
+}

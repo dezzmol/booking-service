@@ -19,19 +19,19 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	BookingService_CreateRoom_FullMethodName                = "/hotel_booking_service.booking_service.BookingService/CreateRoom"
-	BookingService_UpdateRoom_FullMethodName                = "/hotel_booking_service.booking_service.BookingService/UpdateRoom"
-	BookingService_CreateBooking_FullMethodName             = "/hotel_booking_service.booking_service.BookingService/CreateBooking"
-	BookingService_CancelBooking_FullMethodName             = "/hotel_booking_service.booking_service.BookingService/CancelBooking"
-	BookingService_ModifyBooking_FullMethodName             = "/hotel_booking_service.booking_service.BookingService/ModifyBooking"
-	BookingService_GetEmployee_FullMethodName               = "/hotel_booking_service.booking_service.BookingService/GetEmployee"
-	BookingService_AddEmployee_FullMethodName               = "/hotel_booking_service.booking_service.BookingService/AddEmployee"
-	BookingService_UpdateEmployee_FullMethodName            = "/hotel_booking_service.booking_service.BookingService/UpdateEmployee"
-	BookingService_GetGuestsByBookingID_FullMethodName      = "/hotel_booking_service.booking_service.BookingService/GetGuestsByBookingID"
-	BookingService_CreateGuest_FullMethodName               = "/hotel_booking_service.booking_service.BookingService/CreateGuest"
-	BookingService_CreateHouseKeepingRequest_FullMethodName = "/hotel_booking_service.booking_service.BookingService/CreateHouseKeepingRequest"
-	BookingService_AssignEmployee_FullMethodName            = "/hotel_booking_service.booking_service.BookingService/AssignEmployee"
-	BookingService_SubmitReview_FullMethodName              = "/hotel_booking_service.booking_service.BookingService/SubmitReview"
+	BookingService_CreateRoom_FullMethodName                = "/booking_service.BookingService/CreateRoom"
+	BookingService_UpdateRoom_FullMethodName                = "/booking_service.BookingService/UpdateRoom"
+	BookingService_CreateBooking_FullMethodName             = "/booking_service.BookingService/CreateBooking"
+	BookingService_CancelBooking_FullMethodName             = "/booking_service.BookingService/CancelBooking"
+	BookingService_ModifyBooking_FullMethodName             = "/booking_service.BookingService/ModifyBooking"
+	BookingService_GetEmployee_FullMethodName               = "/booking_service.BookingService/GetEmployee"
+	BookingService_AddEmployee_FullMethodName               = "/booking_service.BookingService/AddEmployee"
+	BookingService_UpdateEmployee_FullMethodName            = "/booking_service.BookingService/UpdateEmployee"
+	BookingService_GetGuestsByBookingID_FullMethodName      = "/booking_service.BookingService/GetGuestsByBookingID"
+	BookingService_CreateGuest_FullMethodName               = "/booking_service.BookingService/CreateGuest"
+	BookingService_CreateHouseKeepingRequest_FullMethodName = "/booking_service.BookingService/CreateHouseKeepingRequest"
+	BookingService_AssignEmployee_FullMethodName            = "/booking_service.BookingService/AssignEmployee"
+	BookingService_SubmitReview_FullMethodName              = "/booking_service.BookingService/SubmitReview"
 )
 
 // BookingServiceClient is the client API for BookingService service.
@@ -516,7 +516,7 @@ func _BookingService_SubmitReview_Handler(srv interface{}, ctx context.Context, 
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var BookingService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "hotel_booking_service.booking_service.BookingService",
+	ServiceName: "booking_service.BookingService",
 	HandlerType: (*BookingServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

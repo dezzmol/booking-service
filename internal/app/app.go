@@ -2,6 +2,13 @@ package app
 
 import (
 	"log"
+
+	"booking-service/internal/controllers"
+	"booking-service/internal/handlers"
+	"booking-service/internal/storage"
+
+	"github.com/jmoiron/sqlx"
+	"github.com/streadway/amqp"
 )
 
 type (
@@ -11,13 +18,23 @@ type (
 	}
 
 	Application struct {
-		config  *Config
-		storage *Storage
+		config *Config
 
-		repositories *Repositories
-		clients      *Clients
-		services     *Services
-		handlers     *Handlers
+		Handlers struct {
+			booking *handlers.Handler
+		}
+
+		Controllers struct {
+			BookingController *controllers.Controller
+		}
+
+		PostgreSQL *sqlx.DB
+		Storage    *storage.Storage
+
+		Clients struct {
+			notificationQueue   amqp.Queue
+			notificationChannel *amqp.Channel
+		}
 	}
 )
 
@@ -46,8 +63,7 @@ func (a *Application) Run() {
 	}
 
 	a.initClients()
-	a.initRepositories()
-	a.initServices()
+	a.initControllers()
 	a.initHandlers()
 
 	go a.initGRPC()
@@ -63,5 +79,5 @@ func (a *Application) Run() {
 }
 
 func (a *Application) Stop() {
-	a.storage.db.Close()
+	a.PostgreSQL.Close()
 }

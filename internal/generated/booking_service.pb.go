@@ -1507,121 +1507,121 @@ var File_booking_service_proto protoreflect.FileDescriptor
 
 const file_booking_service_proto_rawDesc = "" +
 	"\n" +
-	"\x15booking_service.proto\x12%hotel_booking_service.booking_service\x1a\x14booking_models.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"R\n" +
+	"\x15booking_service.proto\x12\x0fbooking_service\x1a\x14booking_models.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"R\n" +
 	"\x12BookingServiceLink\x12\x10\n" +
 	"\x03rel\x18\x01 \x01(\tR\x03rel\x12\x12\n" +
 	"\x04href\x18\x02 \x01(\tR\x04href\x12\x16\n" +
-	"\x06method\x18\x03 \x01(\tR\x06method\"_\n" +
-	"\fVoidResponse\x12O\n" +
-	"\x05links\x18\x01 \x03(\v29.hotel_booking_service.booking_service.BookingServiceLinkR\x05links\"Y\n" +
-	"\x11CreateRoomRequest\x12D\n" +
-	"\x05rooms\x18\x01 \x03(\v2..hotel_booking_service.booking_service.RoomDTOR\x05rooms\"\xa6\x01\n" +
-	"\x12CreateRoomResponse\x12?\n" +
-	"\x04room\x18\x01 \x01(\v2+.hotel_booking_service.booking_service.RoomR\x04room\x12O\n" +
-	"\x05links\x18\x02 \x03(\v29.hotel_booking_service.booking_service.BookingServiceLinkR\x05links\"s\n" +
+	"\x06method\x18\x03 \x01(\tR\x06method\"I\n" +
+	"\fVoidResponse\x129\n" +
+	"\x05links\x18\x01 \x03(\v2#.booking_service.BookingServiceLinkR\x05links\"C\n" +
+	"\x11CreateRoomRequest\x12.\n" +
+	"\x05rooms\x18\x01 \x03(\v2\x18.booking_service.RoomDTOR\x05rooms\"z\n" +
+	"\x12CreateRoomResponse\x12)\n" +
+	"\x04room\x18\x01 \x01(\v2\x15.booking_service.RoomR\x04room\x129\n" +
+	"\x05links\x18\x02 \x03(\v2#.booking_service.BookingServiceLinkR\x05links\"s\n" +
 	"\x11UpdateRoomRequest\x12\x17\n" +
 	"\aroom_id\x18\x01 \x01(\x04R\x06roomId\x12\x16\n" +
 	"\x06number\x18\x02 \x01(\tR\x06number\x12\x12\n" +
 	"\x04type\x18\x03 \x01(\tR\x04type\x12\x19\n" +
-	"\bhotel_id\x18\x04 \x01(\x04R\ahotelId\"\xa6\x01\n" +
-	"\x12UpdateRoomResponse\x12?\n" +
-	"\x04room\x18\x01 \x01(\v2+.hotel_booking_service.booking_service.RoomR\x04room\x12O\n" +
-	"\x05links\x18\x02 \x03(\v29.hotel_booking_service.booking_service.BookingServiceLinkR\x05links\"\x84\x02\n" +
+	"\bhotel_id\x18\x04 \x01(\x04R\ahotelId\"z\n" +
+	"\x12UpdateRoomResponse\x12)\n" +
+	"\x04room\x18\x01 \x01(\v2\x15.booking_service.RoomR\x04room\x129\n" +
+	"\x05links\x18\x02 \x03(\v2#.booking_service.BookingServiceLinkR\x05links\"\xee\x01\n" +
 	"\x14CreateBookingRequest\x12\x17\n" +
 	"\aroom_id\x18\x01 \x01(\x04R\x06roomId\x129\n" +
 	"\n" +
 	"start_date\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tstartDate\x125\n" +
 	"\bend_date\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\aendDate\x12\x18\n" +
-	"\acomment\x18\x04 \x01(\tR\acomment\x12G\n" +
-	"\x06guests\x18\x05 \x03(\v2/.hotel_booking_service.booking_service.GuestDTOR\x06guests\"\xb2\x01\n" +
-	"\x15CreateBookingResponse\x12H\n" +
-	"\abooking\x18\x01 \x01(\v2..hotel_booking_service.booking_service.BookingR\abooking\x12O\n" +
-	"\x05links\x18\x02 \x03(\v29.hotel_booking_service.booking_service.BookingServiceLinkR\x05links\"5\n" +
+	"\acomment\x18\x04 \x01(\tR\acomment\x121\n" +
+	"\x06guests\x18\x05 \x03(\v2\x19.booking_service.GuestDTOR\x06guests\"\x86\x01\n" +
+	"\x15CreateBookingResponse\x122\n" +
+	"\abooking\x18\x01 \x01(\v2\x18.booking_service.BookingR\abooking\x129\n" +
+	"\x05links\x18\x02 \x03(\v2#.booking_service.BookingServiceLinkR\x05links\"5\n" +
 	"\x14CancelBookingRequest\x12\x1d\n" +
 	"\n" +
-	"booking_id\x18\x01 \x01(\x04R\tbookingId\"h\n" +
-	"\x15CancelBookingResponse\x12O\n" +
-	"\x05links\x18\x01 \x03(\v29.hotel_booking_service.booking_service.BookingServiceLinkR\x05links\"\xa7\x01\n" +
+	"booking_id\x18\x01 \x01(\x04R\tbookingId\"R\n" +
+	"\x15CancelBookingResponse\x129\n" +
+	"\x05links\x18\x01 \x03(\v2#.booking_service.BookingServiceLinkR\x05links\"\xa7\x01\n" +
 	"\x14ModifyBookingRequest\x12\x1d\n" +
 	"\n" +
 	"booking_id\x18\x01 \x01(\x04R\tbookingId\x129\n" +
 	"\n" +
 	"start_date\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tstartDate\x125\n" +
-	"\bend_date\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\aendDate\"\xb2\x01\n" +
-	"\x15ModifyBookingResponse\x12H\n" +
-	"\abooking\x18\x01 \x01(\v2..hotel_booking_service.booking_service.BookingR\abooking\x12O\n" +
-	"\x05links\x18\x02 \x03(\v29.hotel_booking_service.booking_service.BookingServiceLinkR\x05links\"5\n" +
+	"\bend_date\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\aendDate\"\x86\x01\n" +
+	"\x15ModifyBookingResponse\x122\n" +
+	"\abooking\x18\x01 \x01(\v2\x18.booking_service.BookingR\abooking\x129\n" +
+	"\x05links\x18\x02 \x03(\v2#.booking_service.BookingServiceLinkR\x05links\"5\n" +
 	"\x12GetEmployeeRequest\x12\x1f\n" +
 	"\vemployee_id\x18\x01 \x01(\x04R\n" +
-	"employeeId\"\xb3\x01\n" +
-	"\x13GetEmployeeResponse\x12K\n" +
-	"\bemployee\x18\x01 \x01(\v2/.hotel_booking_service.booking_service.EmployeeR\bemployee\x12O\n" +
-	"\x05links\x18\x02 \x03(\v29.hotel_booking_service.booking_service.BookingServiceLinkR\x05links\"<\n" +
+	"employeeId\"\x87\x01\n" +
+	"\x13GetEmployeeResponse\x125\n" +
+	"\bemployee\x18\x01 \x01(\v2\x19.booking_service.EmployeeR\bemployee\x129\n" +
+	"\x05links\x18\x02 \x03(\v2#.booking_service.BookingServiceLinkR\x05links\"<\n" +
 	"\x12AddEmployeeRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x12\n" +
-	"\x04role\x18\x02 \x01(\tR\x04role\"\xb3\x01\n" +
-	"\x13AddEmployeeResponse\x12K\n" +
-	"\bemployee\x18\x01 \x01(\v2/.hotel_booking_service.booking_service.EmployeeR\bemployee\x12O\n" +
-	"\x05links\x18\x02 \x03(\v29.hotel_booking_service.booking_service.BookingServiceLinkR\x05links\"`\n" +
+	"\x04role\x18\x02 \x01(\tR\x04role\"\x87\x01\n" +
+	"\x13AddEmployeeResponse\x125\n" +
+	"\bemployee\x18\x01 \x01(\v2\x19.booking_service.EmployeeR\bemployee\x129\n" +
+	"\x05links\x18\x02 \x03(\v2#.booking_service.BookingServiceLinkR\x05links\"`\n" +
 	"\x15UpdateEmployeeRequest\x12\x1f\n" +
 	"\vemployee_id\x18\x01 \x01(\x04R\n" +
 	"employeeId\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
-	"\x04role\x18\x03 \x01(\tR\x04role\"\xb6\x01\n" +
-	"\x16UpdateEmployeeResponse\x12K\n" +
-	"\bemployee\x18\x01 \x01(\v2/.hotel_booking_service.booking_service.EmployeeR\bemployee\x12O\n" +
-	"\x05links\x18\x02 \x03(\v29.hotel_booking_service.booking_service.BookingServiceLinkR\x05links\"<\n" +
+	"\x04role\x18\x03 \x01(\tR\x04role\"\x8a\x01\n" +
+	"\x16UpdateEmployeeResponse\x125\n" +
+	"\bemployee\x18\x01 \x01(\v2\x19.booking_service.EmployeeR\bemployee\x129\n" +
+	"\x05links\x18\x02 \x03(\v2#.booking_service.BookingServiceLinkR\x05links\"<\n" +
 	"\x1bGetGuestsByBookingIDRequest\x12\x1d\n" +
 	"\n" +
-	"booking_id\x18\x01 \x01(\x04R\tbookingId\"\xb5\x01\n" +
-	"\x1cGetGuestsByBookingIDResponse\x12D\n" +
-	"\x06guests\x18\x01 \x03(\v2,.hotel_booking_service.booking_service.GuestR\x06guests\x12O\n" +
-	"\x05links\x18\x02 \x03(\v29.hotel_booking_service.booking_service.BookingServiceLinkR\x05links\"(\n" +
+	"booking_id\x18\x01 \x01(\x04R\tbookingId\"\x89\x01\n" +
+	"\x1cGetGuestsByBookingIDResponse\x12.\n" +
+	"\x06guests\x18\x01 \x03(\v2\x16.booking_service.GuestR\x06guests\x129\n" +
+	"\x05links\x18\x02 \x03(\v2#.booking_service.BookingServiceLinkR\x05links\"(\n" +
 	"\x12CreateGuestRequest\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\"\xaa\x01\n" +
-	"\x13CreateGuestResponse\x12B\n" +
-	"\x05guest\x18\x01 \x01(\v2,.hotel_booking_service.booking_service.GuestR\x05guest\x12O\n" +
-	"\x05links\x18\x02 \x03(\v29.hotel_booking_service.booking_service.BookingServiceLinkR\x05links\"z\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\"~\n" +
+	"\x13CreateGuestResponse\x12,\n" +
+	"\x05guest\x18\x01 \x01(\v2\x16.booking_service.GuestR\x05guest\x129\n" +
+	"\x05links\x18\x02 \x03(\v2#.booking_service.BookingServiceLinkR\x05links\"z\n" +
 	" CreateHouseKeepingRequestRequest\x12\x17\n" +
 	"\aroom_id\x18\x01 \x01(\x04R\x06roomId\x12=\n" +
-	"\frequest_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\vrequestTime\"\xca\x01\n" +
-	"!CreateHouseKeepingRequestResponse\x12T\n" +
-	"\arequest\x18\x01 \x01(\v2:.hotel_booking_service.booking_service.HousekeepingRequestR\arequest\x12O\n" +
-	"\x05links\x18\x02 \x03(\v29.hotel_booking_service.booking_service.BookingServiceLinkR\x05links\"W\n" +
+	"\frequest_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\vrequestTime\"\x9e\x01\n" +
+	"!CreateHouseKeepingRequestResponse\x12>\n" +
+	"\arequest\x18\x01 \x01(\v2$.booking_service.HousekeepingRequestR\arequest\x129\n" +
+	"\x05links\x18\x02 \x03(\v2#.booking_service.BookingServiceLinkR\x05links\"W\n" +
 	"\x15AssignEmployeeRequest\x12\x1d\n" +
 	"\n" +
 	"request_id\x18\x01 \x01(\x04R\trequestId\x12\x1f\n" +
 	"\vemployee_id\x18\x02 \x01(\x04R\n" +
-	"employeeId\"\xbf\x01\n" +
-	"\x16AssignEmployeeResponse\x12T\n" +
-	"\arequest\x18\x01 \x01(\v2:.hotel_booking_service.booking_service.HousekeepingRequestR\arequest\x12O\n" +
-	"\x05links\x18\x02 \x03(\v29.hotel_booking_service.booking_service.BookingServiceLinkR\x05links\"\x81\x01\n" +
+	"employeeId\"\x93\x01\n" +
+	"\x16AssignEmployeeResponse\x12>\n" +
+	"\arequest\x18\x01 \x01(\v2$.booking_service.HousekeepingRequestR\arequest\x129\n" +
+	"\x05links\x18\x02 \x03(\v2#.booking_service.BookingServiceLinkR\x05links\"\x81\x01\n" +
 	"\x13SubmitReviewRequest\x12\x1d\n" +
 	"\n" +
 	"booking_id\x18\x01 \x01(\x04R\tbookingId\x12\x19\n" +
 	"\bguest_id\x18\x02 \x01(\x04R\aguestId\x12\x16\n" +
 	"\x06rating\x18\x03 \x01(\x05R\x06rating\x12\x18\n" +
-	"\acomment\x18\x04 \x01(\tR\acomment\"\xae\x01\n" +
-	"\x14SubmitReviewResponse\x12E\n" +
-	"\x06review\x18\x01 \x01(\v2-.hotel_booking_service.booking_service.ReviewR\x06review\x12O\n" +
-	"\x05links\x18\x02 \x03(\v29.hotel_booking_service.booking_service.BookingServiceLinkR\x05links2\xd0\x11\n" +
-	"\x0eBookingService\x12\x90\x01\n" +
+	"\acomment\x18\x04 \x01(\tR\acomment\"\x82\x01\n" +
+	"\x14SubmitReviewResponse\x12/\n" +
+	"\x06review\x18\x01 \x01(\v2\x17.booking_service.ReviewR\x06review\x129\n" +
+	"\x05links\x18\x02 \x03(\v2#.booking_service.BookingServiceLinkR\x05links2\x8d\r\n" +
+	"\x0eBookingService\x12d\n" +
 	"\n" +
-	"CreateRoom\x128.hotel_booking_service.booking_service.CreateRoomRequest\x1a3.hotel_booking_service.booking_service.VoidResponse\"\x13\x82\xd3\xe4\x93\x02\r:\x01*\"\b/v1/room\x12\x96\x01\n" +
+	"CreateRoom\x12\".booking_service.CreateRoomRequest\x1a\x1d.booking_service.VoidResponse\"\x13\x82\xd3\xe4\x93\x02\r:\x01*\"\b/v1/room\x12j\n" +
 	"\n" +
-	"UpdateRoom\x128.hotel_booking_service.booking_service.UpdateRoomRequest\x1a9.hotel_booking_service.booking_service.UpdateRoomResponse\"\x13\x82\xd3\xe4\x93\x02\r:\x01*\x1a\b/v1/room\x12\xa2\x01\n" +
-	"\rCreateBooking\x12;.hotel_booking_service.booking_service.CreateBookingRequest\x1a<.hotel_booking_service.booking_service.CreateBookingResponse\"\x16\x82\xd3\xe4\x93\x02\x10:\x01*\x1a\v/v1/booking\x12\xac\x01\n" +
-	"\rCancelBooking\x12;.hotel_booking_service.booking_service.CancelBookingRequest\x1a<.hotel_booking_service.booking_service.CancelBookingResponse\" \x82\xd3\xe4\x93\x02\x1a*\x18/v1/booking/{booking_id}\x12\xaf\x01\n" +
-	"\rModifyBooking\x12;.hotel_booking_service.booking_service.ModifyBookingRequest\x1a<.hotel_booking_service.booking_service.ModifyBookingResponse\"#\x82\xd3\xe4\x93\x02\x1d:\x01*\x1a\x18/v1/booking/{booking_id}\x12\xa8\x01\n" +
-	"\vGetEmployee\x129.hotel_booking_service.booking_service.GetEmployeeRequest\x1a:.hotel_booking_service.booking_service.GetEmployeeResponse\"\"\x82\xd3\xe4\x93\x02\x1c\x12\x1a/v1/employee/{employee_id}\x12\x9d\x01\n" +
-	"\vAddEmployee\x129.hotel_booking_service.booking_service.AddEmployeeRequest\x1a:.hotel_booking_service.booking_service.AddEmployeeResponse\"\x17\x82\xd3\xe4\x93\x02\x11:\x01*\"\f/v1/employee\x12\xb4\x01\n" +
-	"\x0eUpdateEmployee\x12<.hotel_booking_service.booking_service.UpdateEmployeeRequest\x1a=.hotel_booking_service.booking_service.UpdateEmployeeResponse\"%\x82\xd3\xe4\x93\x02\x1f:\x01*\x1a\x1a/v1/employee/{employee_id}\x12\xc8\x01\n" +
-	"\x14GetGuestsByBookingID\x12B.hotel_booking_service.booking_service.GetGuestsByBookingIDRequest\x1aC.hotel_booking_service.booking_service.GetGuestsByBookingIDResponse\"'\x82\xd3\xe4\x93\x02!\x12\x1f/v1/booking/{booking_id}/guests\x12\x9b\x01\n" +
-	"\vCreateGuest\x129.hotel_booking_service.booking_service.CreateGuestRequest\x1a:.hotel_booking_service.booking_service.CreateGuestResponse\"\x15\x82\xd3\xe4\x93\x02\x0f:\x01*\"\n" +
-	"/v1/guests\x12\xcb\x01\n" +
-	"\x19CreateHouseKeepingRequest\x12G.hotel_booking_service.booking_service.CreateHouseKeepingRequestRequest\x1aH.hotel_booking_service.booking_service.CreateHouseKeepingRequestResponse\"\x1b\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/v1/housekeeping\x12\xb1\x01\n" +
-	"\x0eAssignEmployee\x12<.hotel_booking_service.booking_service.AssignEmployeeRequest\x1a=.hotel_booking_service.booking_service.AssignEmployeeResponse\"\"\x82\xd3\xe4\x93\x02\x1c:\x01*\"\x17/v1/housekeeping/assign\x12\x9e\x01\n" +
-	"\fSubmitReview\x12:.hotel_booking_service.booking_service.SubmitReviewRequest\x1a;.hotel_booking_service.booking_service.SubmitReviewResponse\"\x15\x82\xd3\xe4\x93\x02\x0f:\x01*\"\n" +
+	"UpdateRoom\x12\".booking_service.UpdateRoomRequest\x1a#.booking_service.UpdateRoomResponse\"\x13\x82\xd3\xe4\x93\x02\r:\x01*\x1a\b/v1/room\x12v\n" +
+	"\rCreateBooking\x12%.booking_service.CreateBookingRequest\x1a&.booking_service.CreateBookingResponse\"\x16\x82\xd3\xe4\x93\x02\x10:\x01*\x1a\v/v1/booking\x12\x80\x01\n" +
+	"\rCancelBooking\x12%.booking_service.CancelBookingRequest\x1a&.booking_service.CancelBookingResponse\" \x82\xd3\xe4\x93\x02\x1a*\x18/v1/booking/{booking_id}\x12\x83\x01\n" +
+	"\rModifyBooking\x12%.booking_service.ModifyBookingRequest\x1a&.booking_service.ModifyBookingResponse\"#\x82\xd3\xe4\x93\x02\x1d:\x01*\x1a\x18/v1/booking/{booking_id}\x12|\n" +
+	"\vGetEmployee\x12#.booking_service.GetEmployeeRequest\x1a$.booking_service.GetEmployeeResponse\"\"\x82\xd3\xe4\x93\x02\x1c\x12\x1a/v1/employee/{employee_id}\x12q\n" +
+	"\vAddEmployee\x12#.booking_service.AddEmployeeRequest\x1a$.booking_service.AddEmployeeResponse\"\x17\x82\xd3\xe4\x93\x02\x11:\x01*\"\f/v1/employee\x12\x88\x01\n" +
+	"\x0eUpdateEmployee\x12&.booking_service.UpdateEmployeeRequest\x1a'.booking_service.UpdateEmployeeResponse\"%\x82\xd3\xe4\x93\x02\x1f:\x01*\x1a\x1a/v1/employee/{employee_id}\x12\x9c\x01\n" +
+	"\x14GetGuestsByBookingID\x12,.booking_service.GetGuestsByBookingIDRequest\x1a-.booking_service.GetGuestsByBookingIDResponse\"'\x82\xd3\xe4\x93\x02!\x12\x1f/v1/booking/{booking_id}/guests\x12o\n" +
+	"\vCreateGuest\x12#.booking_service.CreateGuestRequest\x1a$.booking_service.CreateGuestResponse\"\x15\x82\xd3\xe4\x93\x02\x0f:\x01*\"\n" +
+	"/v1/guests\x12\x9f\x01\n" +
+	"\x19CreateHouseKeepingRequest\x121.booking_service.CreateHouseKeepingRequestRequest\x1a2.booking_service.CreateHouseKeepingRequestResponse\"\x1b\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/v1/housekeeping\x12\x85\x01\n" +
+	"\x0eAssignEmployee\x12&.booking_service.AssignEmployeeRequest\x1a'.booking_service.AssignEmployeeResponse\"\"\x82\xd3\xe4\x93\x02\x1c:\x01*\"\x17/v1/housekeeping/assign\x12r\n" +
+	"\fSubmitReview\x12$.booking_service.SubmitReviewRequest\x1a%.booking_service.SubmitReviewResponse\"\x15\x82\xd3\xe4\x93\x02\x0f:\x01*\"\n" +
 	"/v1/reviewB$Z\"booking-service/internal/generatedb\x06proto3"
 
 var (
@@ -1638,104 +1638,104 @@ func file_booking_service_proto_rawDescGZIP() []byte {
 
 var file_booking_service_proto_msgTypes = make([]protoimpl.MessageInfo, 28)
 var file_booking_service_proto_goTypes = []any{
-	(*BookingServiceLink)(nil),                // 0: hotel_booking_service.booking_service.BookingServiceLink
-	(*VoidResponse)(nil),                      // 1: hotel_booking_service.booking_service.VoidResponse
-	(*CreateRoomRequest)(nil),                 // 2: hotel_booking_service.booking_service.CreateRoomRequest
-	(*CreateRoomResponse)(nil),                // 3: hotel_booking_service.booking_service.CreateRoomResponse
-	(*UpdateRoomRequest)(nil),                 // 4: hotel_booking_service.booking_service.UpdateRoomRequest
-	(*UpdateRoomResponse)(nil),                // 5: hotel_booking_service.booking_service.UpdateRoomResponse
-	(*CreateBookingRequest)(nil),              // 6: hotel_booking_service.booking_service.CreateBookingRequest
-	(*CreateBookingResponse)(nil),             // 7: hotel_booking_service.booking_service.CreateBookingResponse
-	(*CancelBookingRequest)(nil),              // 8: hotel_booking_service.booking_service.CancelBookingRequest
-	(*CancelBookingResponse)(nil),             // 9: hotel_booking_service.booking_service.CancelBookingResponse
-	(*ModifyBookingRequest)(nil),              // 10: hotel_booking_service.booking_service.ModifyBookingRequest
-	(*ModifyBookingResponse)(nil),             // 11: hotel_booking_service.booking_service.ModifyBookingResponse
-	(*GetEmployeeRequest)(nil),                // 12: hotel_booking_service.booking_service.GetEmployeeRequest
-	(*GetEmployeeResponse)(nil),               // 13: hotel_booking_service.booking_service.GetEmployeeResponse
-	(*AddEmployeeRequest)(nil),                // 14: hotel_booking_service.booking_service.AddEmployeeRequest
-	(*AddEmployeeResponse)(nil),               // 15: hotel_booking_service.booking_service.AddEmployeeResponse
-	(*UpdateEmployeeRequest)(nil),             // 16: hotel_booking_service.booking_service.UpdateEmployeeRequest
-	(*UpdateEmployeeResponse)(nil),            // 17: hotel_booking_service.booking_service.UpdateEmployeeResponse
-	(*GetGuestsByBookingIDRequest)(nil),       // 18: hotel_booking_service.booking_service.GetGuestsByBookingIDRequest
-	(*GetGuestsByBookingIDResponse)(nil),      // 19: hotel_booking_service.booking_service.GetGuestsByBookingIDResponse
-	(*CreateGuestRequest)(nil),                // 20: hotel_booking_service.booking_service.CreateGuestRequest
-	(*CreateGuestResponse)(nil),               // 21: hotel_booking_service.booking_service.CreateGuestResponse
-	(*CreateHouseKeepingRequestRequest)(nil),  // 22: hotel_booking_service.booking_service.CreateHouseKeepingRequestRequest
-	(*CreateHouseKeepingRequestResponse)(nil), // 23: hotel_booking_service.booking_service.CreateHouseKeepingRequestResponse
-	(*AssignEmployeeRequest)(nil),             // 24: hotel_booking_service.booking_service.AssignEmployeeRequest
-	(*AssignEmployeeResponse)(nil),            // 25: hotel_booking_service.booking_service.AssignEmployeeResponse
-	(*SubmitReviewRequest)(nil),               // 26: hotel_booking_service.booking_service.SubmitReviewRequest
-	(*SubmitReviewResponse)(nil),              // 27: hotel_booking_service.booking_service.SubmitReviewResponse
-	(*RoomDTO)(nil),                           // 28: hotel_booking_service.booking_service.RoomDTO
-	(*Room)(nil),                              // 29: hotel_booking_service.booking_service.Room
+	(*BookingServiceLink)(nil),                // 0: booking_service.BookingServiceLink
+	(*VoidResponse)(nil),                      // 1: booking_service.VoidResponse
+	(*CreateRoomRequest)(nil),                 // 2: booking_service.CreateRoomRequest
+	(*CreateRoomResponse)(nil),                // 3: booking_service.CreateRoomResponse
+	(*UpdateRoomRequest)(nil),                 // 4: booking_service.UpdateRoomRequest
+	(*UpdateRoomResponse)(nil),                // 5: booking_service.UpdateRoomResponse
+	(*CreateBookingRequest)(nil),              // 6: booking_service.CreateBookingRequest
+	(*CreateBookingResponse)(nil),             // 7: booking_service.CreateBookingResponse
+	(*CancelBookingRequest)(nil),              // 8: booking_service.CancelBookingRequest
+	(*CancelBookingResponse)(nil),             // 9: booking_service.CancelBookingResponse
+	(*ModifyBookingRequest)(nil),              // 10: booking_service.ModifyBookingRequest
+	(*ModifyBookingResponse)(nil),             // 11: booking_service.ModifyBookingResponse
+	(*GetEmployeeRequest)(nil),                // 12: booking_service.GetEmployeeRequest
+	(*GetEmployeeResponse)(nil),               // 13: booking_service.GetEmployeeResponse
+	(*AddEmployeeRequest)(nil),                // 14: booking_service.AddEmployeeRequest
+	(*AddEmployeeResponse)(nil),               // 15: booking_service.AddEmployeeResponse
+	(*UpdateEmployeeRequest)(nil),             // 16: booking_service.UpdateEmployeeRequest
+	(*UpdateEmployeeResponse)(nil),            // 17: booking_service.UpdateEmployeeResponse
+	(*GetGuestsByBookingIDRequest)(nil),       // 18: booking_service.GetGuestsByBookingIDRequest
+	(*GetGuestsByBookingIDResponse)(nil),      // 19: booking_service.GetGuestsByBookingIDResponse
+	(*CreateGuestRequest)(nil),                // 20: booking_service.CreateGuestRequest
+	(*CreateGuestResponse)(nil),               // 21: booking_service.CreateGuestResponse
+	(*CreateHouseKeepingRequestRequest)(nil),  // 22: booking_service.CreateHouseKeepingRequestRequest
+	(*CreateHouseKeepingRequestResponse)(nil), // 23: booking_service.CreateHouseKeepingRequestResponse
+	(*AssignEmployeeRequest)(nil),             // 24: booking_service.AssignEmployeeRequest
+	(*AssignEmployeeResponse)(nil),            // 25: booking_service.AssignEmployeeResponse
+	(*SubmitReviewRequest)(nil),               // 26: booking_service.SubmitReviewRequest
+	(*SubmitReviewResponse)(nil),              // 27: booking_service.SubmitReviewResponse
+	(*RoomDTO)(nil),                           // 28: booking_service.RoomDTO
+	(*Room)(nil),                              // 29: booking_service.Room
 	(*timestamppb.Timestamp)(nil),             // 30: google.protobuf.Timestamp
-	(*GuestDTO)(nil),                          // 31: hotel_booking_service.booking_service.GuestDTO
-	(*Booking)(nil),                           // 32: hotel_booking_service.booking_service.Booking
-	(*Employee)(nil),                          // 33: hotel_booking_service.booking_service.Employee
-	(*Guest)(nil),                             // 34: hotel_booking_service.booking_service.Guest
-	(*HousekeepingRequest)(nil),               // 35: hotel_booking_service.booking_service.HousekeepingRequest
-	(*Review)(nil),                            // 36: hotel_booking_service.booking_service.Review
+	(*GuestDTO)(nil),                          // 31: booking_service.GuestDTO
+	(*Booking)(nil),                           // 32: booking_service.Booking
+	(*Employee)(nil),                          // 33: booking_service.Employee
+	(*Guest)(nil),                             // 34: booking_service.Guest
+	(*HousekeepingRequest)(nil),               // 35: booking_service.HousekeepingRequest
+	(*Review)(nil),                            // 36: booking_service.Review
 }
 var file_booking_service_proto_depIdxs = []int32{
-	0,  // 0: hotel_booking_service.booking_service.VoidResponse.links:type_name -> hotel_booking_service.booking_service.BookingServiceLink
-	28, // 1: hotel_booking_service.booking_service.CreateRoomRequest.rooms:type_name -> hotel_booking_service.booking_service.RoomDTO
-	29, // 2: hotel_booking_service.booking_service.CreateRoomResponse.room:type_name -> hotel_booking_service.booking_service.Room
-	0,  // 3: hotel_booking_service.booking_service.CreateRoomResponse.links:type_name -> hotel_booking_service.booking_service.BookingServiceLink
-	29, // 4: hotel_booking_service.booking_service.UpdateRoomResponse.room:type_name -> hotel_booking_service.booking_service.Room
-	0,  // 5: hotel_booking_service.booking_service.UpdateRoomResponse.links:type_name -> hotel_booking_service.booking_service.BookingServiceLink
-	30, // 6: hotel_booking_service.booking_service.CreateBookingRequest.start_date:type_name -> google.protobuf.Timestamp
-	30, // 7: hotel_booking_service.booking_service.CreateBookingRequest.end_date:type_name -> google.protobuf.Timestamp
-	31, // 8: hotel_booking_service.booking_service.CreateBookingRequest.guests:type_name -> hotel_booking_service.booking_service.GuestDTO
-	32, // 9: hotel_booking_service.booking_service.CreateBookingResponse.booking:type_name -> hotel_booking_service.booking_service.Booking
-	0,  // 10: hotel_booking_service.booking_service.CreateBookingResponse.links:type_name -> hotel_booking_service.booking_service.BookingServiceLink
-	0,  // 11: hotel_booking_service.booking_service.CancelBookingResponse.links:type_name -> hotel_booking_service.booking_service.BookingServiceLink
-	30, // 12: hotel_booking_service.booking_service.ModifyBookingRequest.start_date:type_name -> google.protobuf.Timestamp
-	30, // 13: hotel_booking_service.booking_service.ModifyBookingRequest.end_date:type_name -> google.protobuf.Timestamp
-	32, // 14: hotel_booking_service.booking_service.ModifyBookingResponse.booking:type_name -> hotel_booking_service.booking_service.Booking
-	0,  // 15: hotel_booking_service.booking_service.ModifyBookingResponse.links:type_name -> hotel_booking_service.booking_service.BookingServiceLink
-	33, // 16: hotel_booking_service.booking_service.GetEmployeeResponse.employee:type_name -> hotel_booking_service.booking_service.Employee
-	0,  // 17: hotel_booking_service.booking_service.GetEmployeeResponse.links:type_name -> hotel_booking_service.booking_service.BookingServiceLink
-	33, // 18: hotel_booking_service.booking_service.AddEmployeeResponse.employee:type_name -> hotel_booking_service.booking_service.Employee
-	0,  // 19: hotel_booking_service.booking_service.AddEmployeeResponse.links:type_name -> hotel_booking_service.booking_service.BookingServiceLink
-	33, // 20: hotel_booking_service.booking_service.UpdateEmployeeResponse.employee:type_name -> hotel_booking_service.booking_service.Employee
-	0,  // 21: hotel_booking_service.booking_service.UpdateEmployeeResponse.links:type_name -> hotel_booking_service.booking_service.BookingServiceLink
-	34, // 22: hotel_booking_service.booking_service.GetGuestsByBookingIDResponse.guests:type_name -> hotel_booking_service.booking_service.Guest
-	0,  // 23: hotel_booking_service.booking_service.GetGuestsByBookingIDResponse.links:type_name -> hotel_booking_service.booking_service.BookingServiceLink
-	34, // 24: hotel_booking_service.booking_service.CreateGuestResponse.guest:type_name -> hotel_booking_service.booking_service.Guest
-	0,  // 25: hotel_booking_service.booking_service.CreateGuestResponse.links:type_name -> hotel_booking_service.booking_service.BookingServiceLink
-	30, // 26: hotel_booking_service.booking_service.CreateHouseKeepingRequestRequest.request_time:type_name -> google.protobuf.Timestamp
-	35, // 27: hotel_booking_service.booking_service.CreateHouseKeepingRequestResponse.request:type_name -> hotel_booking_service.booking_service.HousekeepingRequest
-	0,  // 28: hotel_booking_service.booking_service.CreateHouseKeepingRequestResponse.links:type_name -> hotel_booking_service.booking_service.BookingServiceLink
-	35, // 29: hotel_booking_service.booking_service.AssignEmployeeResponse.request:type_name -> hotel_booking_service.booking_service.HousekeepingRequest
-	0,  // 30: hotel_booking_service.booking_service.AssignEmployeeResponse.links:type_name -> hotel_booking_service.booking_service.BookingServiceLink
-	36, // 31: hotel_booking_service.booking_service.SubmitReviewResponse.review:type_name -> hotel_booking_service.booking_service.Review
-	0,  // 32: hotel_booking_service.booking_service.SubmitReviewResponse.links:type_name -> hotel_booking_service.booking_service.BookingServiceLink
-	2,  // 33: hotel_booking_service.booking_service.BookingService.CreateRoom:input_type -> hotel_booking_service.booking_service.CreateRoomRequest
-	4,  // 34: hotel_booking_service.booking_service.BookingService.UpdateRoom:input_type -> hotel_booking_service.booking_service.UpdateRoomRequest
-	6,  // 35: hotel_booking_service.booking_service.BookingService.CreateBooking:input_type -> hotel_booking_service.booking_service.CreateBookingRequest
-	8,  // 36: hotel_booking_service.booking_service.BookingService.CancelBooking:input_type -> hotel_booking_service.booking_service.CancelBookingRequest
-	10, // 37: hotel_booking_service.booking_service.BookingService.ModifyBooking:input_type -> hotel_booking_service.booking_service.ModifyBookingRequest
-	12, // 38: hotel_booking_service.booking_service.BookingService.GetEmployee:input_type -> hotel_booking_service.booking_service.GetEmployeeRequest
-	14, // 39: hotel_booking_service.booking_service.BookingService.AddEmployee:input_type -> hotel_booking_service.booking_service.AddEmployeeRequest
-	16, // 40: hotel_booking_service.booking_service.BookingService.UpdateEmployee:input_type -> hotel_booking_service.booking_service.UpdateEmployeeRequest
-	18, // 41: hotel_booking_service.booking_service.BookingService.GetGuestsByBookingID:input_type -> hotel_booking_service.booking_service.GetGuestsByBookingIDRequest
-	20, // 42: hotel_booking_service.booking_service.BookingService.CreateGuest:input_type -> hotel_booking_service.booking_service.CreateGuestRequest
-	22, // 43: hotel_booking_service.booking_service.BookingService.CreateHouseKeepingRequest:input_type -> hotel_booking_service.booking_service.CreateHouseKeepingRequestRequest
-	24, // 44: hotel_booking_service.booking_service.BookingService.AssignEmployee:input_type -> hotel_booking_service.booking_service.AssignEmployeeRequest
-	26, // 45: hotel_booking_service.booking_service.BookingService.SubmitReview:input_type -> hotel_booking_service.booking_service.SubmitReviewRequest
-	1,  // 46: hotel_booking_service.booking_service.BookingService.CreateRoom:output_type -> hotel_booking_service.booking_service.VoidResponse
-	5,  // 47: hotel_booking_service.booking_service.BookingService.UpdateRoom:output_type -> hotel_booking_service.booking_service.UpdateRoomResponse
-	7,  // 48: hotel_booking_service.booking_service.BookingService.CreateBooking:output_type -> hotel_booking_service.booking_service.CreateBookingResponse
-	9,  // 49: hotel_booking_service.booking_service.BookingService.CancelBooking:output_type -> hotel_booking_service.booking_service.CancelBookingResponse
-	11, // 50: hotel_booking_service.booking_service.BookingService.ModifyBooking:output_type -> hotel_booking_service.booking_service.ModifyBookingResponse
-	13, // 51: hotel_booking_service.booking_service.BookingService.GetEmployee:output_type -> hotel_booking_service.booking_service.GetEmployeeResponse
-	15, // 52: hotel_booking_service.booking_service.BookingService.AddEmployee:output_type -> hotel_booking_service.booking_service.AddEmployeeResponse
-	17, // 53: hotel_booking_service.booking_service.BookingService.UpdateEmployee:output_type -> hotel_booking_service.booking_service.UpdateEmployeeResponse
-	19, // 54: hotel_booking_service.booking_service.BookingService.GetGuestsByBookingID:output_type -> hotel_booking_service.booking_service.GetGuestsByBookingIDResponse
-	21, // 55: hotel_booking_service.booking_service.BookingService.CreateGuest:output_type -> hotel_booking_service.booking_service.CreateGuestResponse
-	23, // 56: hotel_booking_service.booking_service.BookingService.CreateHouseKeepingRequest:output_type -> hotel_booking_service.booking_service.CreateHouseKeepingRequestResponse
-	25, // 57: hotel_booking_service.booking_service.BookingService.AssignEmployee:output_type -> hotel_booking_service.booking_service.AssignEmployeeResponse
-	27, // 58: hotel_booking_service.booking_service.BookingService.SubmitReview:output_type -> hotel_booking_service.booking_service.SubmitReviewResponse
+	0,  // 0: booking_service.VoidResponse.links:type_name -> booking_service.BookingServiceLink
+	28, // 1: booking_service.CreateRoomRequest.rooms:type_name -> booking_service.RoomDTO
+	29, // 2: booking_service.CreateRoomResponse.room:type_name -> booking_service.Room
+	0,  // 3: booking_service.CreateRoomResponse.links:type_name -> booking_service.BookingServiceLink
+	29, // 4: booking_service.UpdateRoomResponse.room:type_name -> booking_service.Room
+	0,  // 5: booking_service.UpdateRoomResponse.links:type_name -> booking_service.BookingServiceLink
+	30, // 6: booking_service.CreateBookingRequest.start_date:type_name -> google.protobuf.Timestamp
+	30, // 7: booking_service.CreateBookingRequest.end_date:type_name -> google.protobuf.Timestamp
+	31, // 8: booking_service.CreateBookingRequest.guests:type_name -> booking_service.GuestDTO
+	32, // 9: booking_service.CreateBookingResponse.booking:type_name -> booking_service.Booking
+	0,  // 10: booking_service.CreateBookingResponse.links:type_name -> booking_service.BookingServiceLink
+	0,  // 11: booking_service.CancelBookingResponse.links:type_name -> booking_service.BookingServiceLink
+	30, // 12: booking_service.ModifyBookingRequest.start_date:type_name -> google.protobuf.Timestamp
+	30, // 13: booking_service.ModifyBookingRequest.end_date:type_name -> google.protobuf.Timestamp
+	32, // 14: booking_service.ModifyBookingResponse.booking:type_name -> booking_service.Booking
+	0,  // 15: booking_service.ModifyBookingResponse.links:type_name -> booking_service.BookingServiceLink
+	33, // 16: booking_service.GetEmployeeResponse.employee:type_name -> booking_service.Employee
+	0,  // 17: booking_service.GetEmployeeResponse.links:type_name -> booking_service.BookingServiceLink
+	33, // 18: booking_service.AddEmployeeResponse.employee:type_name -> booking_service.Employee
+	0,  // 19: booking_service.AddEmployeeResponse.links:type_name -> booking_service.BookingServiceLink
+	33, // 20: booking_service.UpdateEmployeeResponse.employee:type_name -> booking_service.Employee
+	0,  // 21: booking_service.UpdateEmployeeResponse.links:type_name -> booking_service.BookingServiceLink
+	34, // 22: booking_service.GetGuestsByBookingIDResponse.guests:type_name -> booking_service.Guest
+	0,  // 23: booking_service.GetGuestsByBookingIDResponse.links:type_name -> booking_service.BookingServiceLink
+	34, // 24: booking_service.CreateGuestResponse.guest:type_name -> booking_service.Guest
+	0,  // 25: booking_service.CreateGuestResponse.links:type_name -> booking_service.BookingServiceLink
+	30, // 26: booking_service.CreateHouseKeepingRequestRequest.request_time:type_name -> google.protobuf.Timestamp
+	35, // 27: booking_service.CreateHouseKeepingRequestResponse.request:type_name -> booking_service.HousekeepingRequest
+	0,  // 28: booking_service.CreateHouseKeepingRequestResponse.links:type_name -> booking_service.BookingServiceLink
+	35, // 29: booking_service.AssignEmployeeResponse.request:type_name -> booking_service.HousekeepingRequest
+	0,  // 30: booking_service.AssignEmployeeResponse.links:type_name -> booking_service.BookingServiceLink
+	36, // 31: booking_service.SubmitReviewResponse.review:type_name -> booking_service.Review
+	0,  // 32: booking_service.SubmitReviewResponse.links:type_name -> booking_service.BookingServiceLink
+	2,  // 33: booking_service.BookingService.CreateRoom:input_type -> booking_service.CreateRoomRequest
+	4,  // 34: booking_service.BookingService.UpdateRoom:input_type -> booking_service.UpdateRoomRequest
+	6,  // 35: booking_service.BookingService.CreateBooking:input_type -> booking_service.CreateBookingRequest
+	8,  // 36: booking_service.BookingService.CancelBooking:input_type -> booking_service.CancelBookingRequest
+	10, // 37: booking_service.BookingService.ModifyBooking:input_type -> booking_service.ModifyBookingRequest
+	12, // 38: booking_service.BookingService.GetEmployee:input_type -> booking_service.GetEmployeeRequest
+	14, // 39: booking_service.BookingService.AddEmployee:input_type -> booking_service.AddEmployeeRequest
+	16, // 40: booking_service.BookingService.UpdateEmployee:input_type -> booking_service.UpdateEmployeeRequest
+	18, // 41: booking_service.BookingService.GetGuestsByBookingID:input_type -> booking_service.GetGuestsByBookingIDRequest
+	20, // 42: booking_service.BookingService.CreateGuest:input_type -> booking_service.CreateGuestRequest
+	22, // 43: booking_service.BookingService.CreateHouseKeepingRequest:input_type -> booking_service.CreateHouseKeepingRequestRequest
+	24, // 44: booking_service.BookingService.AssignEmployee:input_type -> booking_service.AssignEmployeeRequest
+	26, // 45: booking_service.BookingService.SubmitReview:input_type -> booking_service.SubmitReviewRequest
+	1,  // 46: booking_service.BookingService.CreateRoom:output_type -> booking_service.VoidResponse
+	5,  // 47: booking_service.BookingService.UpdateRoom:output_type -> booking_service.UpdateRoomResponse
+	7,  // 48: booking_service.BookingService.CreateBooking:output_type -> booking_service.CreateBookingResponse
+	9,  // 49: booking_service.BookingService.CancelBooking:output_type -> booking_service.CancelBookingResponse
+	11, // 50: booking_service.BookingService.ModifyBooking:output_type -> booking_service.ModifyBookingResponse
+	13, // 51: booking_service.BookingService.GetEmployee:output_type -> booking_service.GetEmployeeResponse
+	15, // 52: booking_service.BookingService.AddEmployee:output_type -> booking_service.AddEmployeeResponse
+	17, // 53: booking_service.BookingService.UpdateEmployee:output_type -> booking_service.UpdateEmployeeResponse
+	19, // 54: booking_service.BookingService.GetGuestsByBookingID:output_type -> booking_service.GetGuestsByBookingIDResponse
+	21, // 55: booking_service.BookingService.CreateGuest:output_type -> booking_service.CreateGuestResponse
+	23, // 56: booking_service.BookingService.CreateHouseKeepingRequest:output_type -> booking_service.CreateHouseKeepingRequestResponse
+	25, // 57: booking_service.BookingService.AssignEmployee:output_type -> booking_service.AssignEmployeeResponse
+	27, // 58: booking_service.BookingService.SubmitReview:output_type -> booking_service.SubmitReviewResponse
 	46, // [46:59] is the sub-list for method output_type
 	33, // [33:46] is the sub-list for method input_type
 	33, // [33:33] is the sub-list for extension type_name

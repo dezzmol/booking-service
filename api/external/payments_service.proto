@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "external/payments_models.proto";
+import "google/api/annotations.proto";
+
+option go_package = "booking-service/internal/generated;generated";
+
+package payment;
+
+service PaymentService {
+  rpc ProcessPayment (ProcessRequest) returns (ProcessResponse) {
+    option (google.api.http) = {
+      post: "/v1/payment"
+      body: "*"
+    };
+  }
+
+  rpc CancelPayment (BookingInfo) returns (ProcessResponse) {
+    option (google.api.http) = {
+      delete: "/v1/payment/{booking_id}"
+    };
+  }
+
+  rpc GetPaymentsInfo (BookingInfo) returns (PaymentsResponse) {
+    option (google.api.http) = {
+      get: "/v1/payment/{booking_id}"
+    };
+  }
+}
+
+message ProcessRequest {
+  uint64 booking_id = 1;
+  float amount = 2;
+}
+
+message ProcessResponse {
+  bool status = 1;
+  optional string Error = 2;
+  repeated PaymentLink links = 3;
+}
+
+message BookingInfo {
+  uint64 booking_id = 1;
+}
+
+message PaymentsResponse {
+  repeated Payment payments = 1;
+  repeated PaymentLink links = 2;
+}
+
+message PaymentLink {
+  string rel = 1;
+  string href = 2;
+  string method = 3;
+}

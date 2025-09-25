@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "booking-service/internal/generated;generated";
+
+package payment;
+
+message Payment {
+  uint64 id = 1;
+  uint64 booking_id = 4;
+  double amount = 5;
+  google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Timestamp updated_at = 7;
+  google.protobuf.Timestamp payment_date = 8;
+  string status = 9;
+}

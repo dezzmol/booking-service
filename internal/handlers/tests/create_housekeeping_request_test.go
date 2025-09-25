@@ -6,10 +6,10 @@ import (
 	"testing"
 	"time"
 
+	"booking-service/internal/controllers/house_keeping_request/mocks"
 	"booking-service/internal/entities"
 	"booking-service/internal/generated"
 	"booking-service/internal/handlers"
-	"booking-service/internal/services/house_keeping_request/mocks"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"

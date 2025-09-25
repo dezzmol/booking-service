@@ -7,6 +7,12 @@ import (
 	_ "github.com/lib/pq"
 )
 
+type Storage struct{}
+
+func New() *Storage {
+	return &Storage{}
+}
+
 func NewDB(host, username, password, dbname, port string) (*sqlx.DB, error) {
 	if username == "" || password == "" || dbname == "" || port == "" {
 		return nil, fmt.Errorf("[NewDB]: DB_USERNAME, DB_PASSWORD, DB_NAME или DB_PORT not initialized")

@@ -7,7 +7,6 @@ type Review struct {
 	CreatedAt time.Time `db:"created_at"`
 	UpdatedAt time.Time `db:"updated_at"`
 	BookingID uint64    `db:"booking_id"`
-	GuestID   uint64    `db:"guest_id"`
 	Rating    int       `db:"rating"`
 	Comment   string    `db:"comment"`
 }

@@ -966,7 +966,7 @@ var File_booking_models_proto protoreflect.FileDescriptor
 
 const file_booking_models_proto_rawDesc = "" +
 	"\n" +
-	"\x14booking_models.proto\x12%hotel_booking_service.booking_service\x1a\x1fgoogle/protobuf/timestamp.proto\"\xd3\x01\n" +
+	"\x14booking_models.proto\x12\x0fbooking_service\x1a\x1fgoogle/protobuf/timestamp.proto\"\xd3\x01\n" +
 	"\x04Room\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x129\n" +
 	"\n" +
@@ -1035,7 +1035,7 @@ const file_booking_models_proto_rawDesc = "" +
 	"\x04role\x18\x05 \x01(\tR\x04role\"5\n" +
 	"\vEmployeeDTO\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x12\n" +
-	"\x04role\x18\x02 \x01(\tR\x04role\"\xb9\x03\n" +
+	"\x04role\x18\x02 \x01(\tR\x04role\"\xa3\x03\n" +
 	"\aBooking\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x129\n" +
 	"\n" +
@@ -1048,16 +1048,16 @@ const file_booking_models_proto_rawDesc = "" +
 	"\bend_date\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\aendDate\x12\x18\n" +
 	"\acomment\x18\a \x01(\tR\acomment\x12\x16\n" +
 	"\x06status\x18\b \x01(\tR\x06status\x12%\n" +
-	"\x0epayment_status\x18\t \x01(\tR\rpaymentStatus\x12D\n" +
+	"\x0epayment_status\x18\t \x01(\tR\rpaymentStatus\x12.\n" +
 	"\x06guests\x18\n" +
-	" \x03(\v2,.hotel_booking_service.booking_service.GuestR\x06guests\"\x80\x02\n" +
+	" \x03(\v2\x16.booking_service.GuestR\x06guests\"\xea\x01\n" +
 	"\x10CreateBookingDTO\x12\x17\n" +
 	"\aroom_id\x18\x01 \x01(\x04R\x06roomId\x129\n" +
 	"\n" +
 	"start_date\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tstartDate\x125\n" +
 	"\bend_date\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\aendDate\x12\x18\n" +
-	"\acomment\x18\x04 \x01(\tR\acomment\x12G\n" +
-	"\x06guests\x18\x05 \x03(\v2/.hotel_booking_service.booking_service.GuestDTOR\x06guestsB.Z,booking-service/internal/generated;generatedb\x06proto3"
+	"\acomment\x18\x04 \x01(\tR\acomment\x121\n" +
+	"\x06guests\x18\x05 \x03(\v2\x19.booking_service.GuestDTOR\x06guestsB.Z,booking-service/internal/generated;generatedb\x06proto3"
 
 var (
 	file_booking_models_proto_rawDescOnce sync.Once
@@ -1073,44 +1073,44 @@ func file_booking_models_proto_rawDescGZIP() []byte {
 
 var file_booking_models_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_booking_models_proto_goTypes = []any{
-	(*Room)(nil),                   // 0: hotel_booking_service.booking_service.Room
-	(*RoomDTO)(nil),                // 1: hotel_booking_service.booking_service.RoomDTO
-	(*Review)(nil),                 // 2: hotel_booking_service.booking_service.Review
-	(*ReviewDTO)(nil),              // 3: hotel_booking_service.booking_service.ReviewDTO
-	(*HousekeepingRequest)(nil),    // 4: hotel_booking_service.booking_service.HousekeepingRequest
-	(*HouseKeepingRequestDTO)(nil), // 5: hotel_booking_service.booking_service.HouseKeepingRequestDTO
-	(*Hotel)(nil),                  // 6: hotel_booking_service.booking_service.Hotel
-	(*Guest)(nil),                  // 7: hotel_booking_service.booking_service.Guest
-	(*GuestDTO)(nil),               // 8: hotel_booking_service.booking_service.GuestDTO
-	(*Employee)(nil),               // 9: hotel_booking_service.booking_service.Employee
-	(*EmployeeDTO)(nil),            // 10: hotel_booking_service.booking_service.EmployeeDTO
-	(*Booking)(nil),                // 11: hotel_booking_service.booking_service.Booking
-	(*CreateBookingDTO)(nil),       // 12: hotel_booking_service.booking_service.CreateBookingDTO
+	(*Room)(nil),                   // 0: booking_service.Room
+	(*RoomDTO)(nil),                // 1: booking_service.RoomDTO
+	(*Review)(nil),                 // 2: booking_service.Review
+	(*ReviewDTO)(nil),              // 3: booking_service.ReviewDTO
+	(*HousekeepingRequest)(nil),    // 4: booking_service.HousekeepingRequest
+	(*HouseKeepingRequestDTO)(nil), // 5: booking_service.HouseKeepingRequestDTO
+	(*Hotel)(nil),                  // 6: booking_service.Hotel
+	(*Guest)(nil),                  // 7: booking_service.Guest
+	(*GuestDTO)(nil),               // 8: booking_service.GuestDTO
+	(*Employee)(nil),               // 9: booking_service.Employee
+	(*EmployeeDTO)(nil),            // 10: booking_service.EmployeeDTO
+	(*Booking)(nil),                // 11: booking_service.Booking
+	(*CreateBookingDTO)(nil),       // 12: booking_service.CreateBookingDTO
 	(*timestamppb.Timestamp)(nil),  // 13: google.protobuf.Timestamp
 }
 var file_booking_models_proto_depIdxs = []int32{
-	13, // 0: hotel_booking_service.booking_service.Room.created_at:type_name -> google.protobuf.Timestamp
-	13, // 1: hotel_booking_service.booking_service.Room.updated_at:type_name -> google.protobuf.Timestamp
-	13, // 2: hotel_booking_service.booking_service.Review.created_at:type_name -> google.protobuf.Timestamp
-	13, // 3: hotel_booking_service.booking_service.Review.updated_at:type_name -> google.protobuf.Timestamp
-	13, // 4: hotel_booking_service.booking_service.HousekeepingRequest.created_at:type_name -> google.protobuf.Timestamp
-	13, // 5: hotel_booking_service.booking_service.HousekeepingRequest.updated_at:type_name -> google.protobuf.Timestamp
-	13, // 6: hotel_booking_service.booking_service.HousekeepingRequest.request_time:type_name -> google.protobuf.Timestamp
-	13, // 7: hotel_booking_service.booking_service.HouseKeepingRequestDTO.request_time:type_name -> google.protobuf.Timestamp
-	13, // 8: hotel_booking_service.booking_service.Hotel.created_at:type_name -> google.protobuf.Timestamp
-	13, // 9: hotel_booking_service.booking_service.Hotel.updated_at:type_name -> google.protobuf.Timestamp
-	13, // 10: hotel_booking_service.booking_service.Guest.created_at:type_name -> google.protobuf.Timestamp
-	13, // 11: hotel_booking_service.booking_service.Guest.updated_at:type_name -> google.protobuf.Timestamp
-	13, // 12: hotel_booking_service.booking_service.Employee.created_at:type_name -> google.protobuf.Timestamp
-	13, // 13: hotel_booking_service.booking_service.Employee.updated_at:type_name -> google.protobuf.Timestamp
-	13, // 14: hotel_booking_service.booking_service.Booking.created_at:type_name -> google.protobuf.Timestamp
-	13, // 15: hotel_booking_service.booking_service.Booking.updated_at:type_name -> google.protobuf.Timestamp
-	13, // 16: hotel_booking_service.booking_service.Booking.start_date:type_name -> google.protobuf.Timestamp
-	13, // 17: hotel_booking_service.booking_service.Booking.end_date:type_name -> google.protobuf.Timestamp
-	7,  // 18: hotel_booking_service.booking_service.Booking.guests:type_name -> hotel_booking_service.booking_service.Guest
-	13, // 19: hotel_booking_service.booking_service.CreateBookingDTO.start_date:type_name -> google.protobuf.Timestamp
-	13, // 20: hotel_booking_service.booking_service.CreateBookingDTO.end_date:type_name -> google.protobuf.Timestamp
-	8,  // 21: hotel_booking_service.booking_service.CreateBookingDTO.guests:type_name -> hotel_booking_service.booking_service.GuestDTO
+	13, // 0: booking_service.Room.created_at:type_name -> google.protobuf.Timestamp
+	13, // 1: booking_service.Room.updated_at:type_name -> google.protobuf.Timestamp
+	13, // 2: booking_service.Review.created_at:type_name -> google.protobuf.Timestamp
+	13, // 3: booking_service.Review.updated_at:type_name -> google.protobuf.Timestamp
+	13, // 4: booking_service.HousekeepingRequest.created_at:type_name -> google.protobuf.Timestamp
+	13, // 5: booking_service.HousekeepingRequest.updated_at:type_name -> google.protobuf.Timestamp
+	13, // 6: booking_service.HousekeepingRequest.request_time:type_name -> google.protobuf.Timestamp
+	13, // 7: booking_service.HouseKeepingRequestDTO.request_time:type_name -> google.protobuf.Timestamp
+	13, // 8: booking_service.Hotel.created_at:type_name -> google.protobuf.Timestamp
+	13, // 9: booking_service.Hotel.updated_at:type_name -> google.protobuf.Timestamp
+	13, // 10: booking_service.Guest.created_at:type_name -> google.protobuf.Timestamp
+	13, // 11: booking_service.Guest.updated_at:type_name -> google.protobuf.Timestamp
+	13, // 12: booking_service.Employee.created_at:type_name -> google.protobuf.Timestamp
+	13, // 13: booking_service.Employee.updated_at:type_name -> google.protobuf.Timestamp
+	13, // 14: booking_service.Booking.created_at:type_name -> google.protobuf.Timestamp
+	13, // 15: booking_service.Booking.updated_at:type_name -> google.protobuf.Timestamp
+	13, // 16: booking_service.Booking.start_date:type_name -> google.protobuf.Timestamp
+	13, // 17: booking_service.Booking.end_date:type_name -> google.protobuf.Timestamp
+	7,  // 18: booking_service.Booking.guests:type_name -> booking_service.Guest
+	13, // 19: booking_service.CreateBookingDTO.start_date:type_name -> google.protobuf.Timestamp
+	13, // 20: booking_service.CreateBookingDTO.end_date:type_name -> google.protobuf.Timestamp
+	8,  // 21: booking_service.CreateBookingDTO.guests:type_name -> booking_service.GuestDTO
 	22, // [22:22] is the sub-list for method output_type
 	22, // [22:22] is the sub-list for method input_type
 	22, // [22:22] is the sub-list for extension type_name

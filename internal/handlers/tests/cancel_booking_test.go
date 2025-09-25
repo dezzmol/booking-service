@@ -5,10 +5,10 @@ import (
 	"errors"
 	"testing"
 
+	"booking-service/internal/controllers/booking/mocks"
 	"booking-service/internal/entities"
 	"booking-service/internal/generated"
 	"booking-service/internal/handlers"
-	"booking-service/internal/services/booking/mocks"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"

@@ -1,4 +1,5 @@
 PROTO_DIR := ./api
+EXTERNAL_PROTO_DIR := ./api/external
 GEN_DIR := ./internal/generated
 MODULE_NAME := booking-service/internal/generated
 
@@ -15,6 +16,14 @@ gen-proto:
 		--grpc-gateway_opt=allow_delete_body=true \
 		--openapiv2_out=$(GEN_DIR) --openapiv2_opt=allow_merge=true,merge_file_name=api \
 		$(shell find $(PROTO_DIR) -name '*.proto')
+
+	@protoc $(PROTO_INCLUDES) \
+		--go_out=$(GEN_DIR) --go_opt=module=$(MODULE_NAME) \
+		--go-grpc_out=$(GEN_DIR) --go-grpc_opt=module=$(MODULE_NAME) \
+		--grpc-gateway_out=$(GEN_DIR) --grpc-gateway_opt=module=$(MODULE_NAME) \
+		--grpc-gateway_opt=allow_delete_body=true \
+		--openapiv2_out=$(GEN_DIR) --openapiv2_opt=allow_merge=true,merge_file_name=api \
+		$(shell find $(EXTERNAL_PROTO_DIR) -name '*.proto')
 	@echo "Proto stubs generated in $(GEN_DIR)"
 
 .PHONY: clean-proto

@@ -3,7 +3,7 @@ import "google/protobuf/timestamp.proto";
 
 option go_package = "booking-service/internal/generated;generated";
 
-package hotel_booking_service.booking_service;
+package booking_service;
 
 message Room {
   uint64 id = 1;

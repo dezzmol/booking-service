@@ -434,7 +434,7 @@ func RegisterBookingServiceHandlerServer(ctx context.Context, mux *runtime.Serve
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/hotel_booking_service.booking_service.BookingService/CreateRoom", runtime.WithHTTPPathPattern("/v1/room"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/booking_service.BookingService/CreateRoom", runtime.WithHTTPPathPattern("/v1/room"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -454,7 +454,7 @@ func RegisterBookingServiceHandlerServer(ctx context.Context, mux *runtime.Serve
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/hotel_booking_service.booking_service.BookingService/UpdateRoom", runtime.WithHTTPPathPattern("/v1/room"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/booking_service.BookingService/UpdateRoom", runtime.WithHTTPPathPattern("/v1/room"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -474,7 +474,7 @@ func RegisterBookingServiceHandlerServer(ctx context.Context, mux *runtime.Serve
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/hotel_booking_service.booking_service.BookingService/CreateBooking", runtime.WithHTTPPathPattern("/v1/booking"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/booking_service.BookingService/CreateBooking", runtime.WithHTTPPathPattern("/v1/booking"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -494,7 +494,7 @@ func RegisterBookingServiceHandlerServer(ctx context.Context, mux *runtime.Serve
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/hotel_booking_service.booking_service.BookingService/CancelBooking", runtime.WithHTTPPathPattern("/v1/booking/{booking_id}"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/booking_service.BookingService/CancelBooking", runtime.WithHTTPPathPattern("/v1/booking/{booking_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -514,7 +514,7 @@ func RegisterBookingServiceHandlerServer(ctx context.Context, mux *runtime.Serve
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/hotel_booking_service.booking_service.BookingService/ModifyBooking", runtime.WithHTTPPathPattern("/v1/booking/{booking_id}"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/booking_service.BookingService/ModifyBooking", runtime.WithHTTPPathPattern("/v1/booking/{booking_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -534,7 +534,7 @@ func RegisterBookingServiceHandlerServer(ctx context.Context, mux *runtime.Serve
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/hotel_booking_service.booking_service.BookingService/GetEmployee", runtime.WithHTTPPathPattern("/v1/employee/{employee_id}"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/booking_service.BookingService/GetEmployee", runtime.WithHTTPPathPattern("/v1/employee/{employee_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -554,7 +554,7 @@ func RegisterBookingServiceHandlerServer(ctx context.Context, mux *runtime.Serve
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/hotel_booking_service.booking_service.BookingService/AddEmployee", runtime.WithHTTPPathPattern("/v1/employee"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/booking_service.BookingService/AddEmployee", runtime.WithHTTPPathPattern("/v1/employee"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -574,7 +574,7 @@ func RegisterBookingServiceHandlerServer(ctx context.Context, mux *runtime.Serve
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/hotel_booking_service.booking_service.BookingService/UpdateEmployee", runtime.WithHTTPPathPattern("/v1/employee/{employee_id}"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/booking_service.BookingService/UpdateEmployee", runtime.WithHTTPPathPattern("/v1/employee/{employee_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -594,7 +594,7 @@ func RegisterBookingServiceHandlerServer(ctx context.Context, mux *runtime.Serve
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/hotel_booking_service.booking_service.BookingService/GetGuestsByBookingID", runtime.WithHTTPPathPattern("/v1/booking/{booking_id}/guests"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/booking_service.BookingService/GetGuestsByBookingID", runtime.WithHTTPPathPattern("/v1/booking/{booking_id}/guests"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -614,7 +614,7 @@ func RegisterBookingServiceHandlerServer(ctx context.Context, mux *runtime.Serve
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/hotel_booking_service.booking_service.BookingService/CreateGuest", runtime.WithHTTPPathPattern("/v1/guests"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/booking_service.BookingService/CreateGuest", runtime.WithHTTPPathPattern("/v1/guests"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -634,7 +634,7 @@ func RegisterBookingServiceHandlerServer(ctx context.Context, mux *runtime.Serve
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/hotel_booking_service.booking_service.BookingService/CreateHouseKeepingRequest", runtime.WithHTTPPathPattern("/v1/housekeeping"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/booking_service.BookingService/CreateHouseKeepingRequest", runtime.WithHTTPPathPattern("/v1/housekeeping"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -654,7 +654,7 @@ func RegisterBookingServiceHandlerServer(ctx context.Context, mux *runtime.Serve
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/hotel_booking_service.booking_service.BookingService/AssignEmployee", runtime.WithHTTPPathPattern("/v1/housekeeping/assign"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/booking_service.BookingService/AssignEmployee", runtime.WithHTTPPathPattern("/v1/housekeeping/assign"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -674,7 +674,7 @@ func RegisterBookingServiceHandlerServer(ctx context.Context, mux *runtime.Serve
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/hotel_booking_service.booking_service.BookingService/SubmitReview", runtime.WithHTTPPathPattern("/v1/review"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/booking_service.BookingService/SubmitReview", runtime.WithHTTPPathPattern("/v1/review"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -732,7 +732,7 @@ func RegisterBookingServiceHandlerClient(ctx context.Context, mux *runtime.Serve
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/hotel_booking_service.booking_service.BookingService/CreateRoom", runtime.WithHTTPPathPattern("/v1/room"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/booking_service.BookingService/CreateRoom", runtime.WithHTTPPathPattern("/v1/room"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -749,7 +749,7 @@ func RegisterBookingServiceHandlerClient(ctx context.Context, mux *runtime.Serve
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/hotel_booking_service.booking_service.BookingService/UpdateRoom", runtime.WithHTTPPathPattern("/v1/room"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/booking_service.BookingService/UpdateRoom", runtime.WithHTTPPathPattern("/v1/room"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -766,7 +766,7 @@ func RegisterBookingServiceHandlerClient(ctx context.Context, mux *runtime.Serve
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/hotel_booking_service.booking_service.BookingService/CreateBooking", runtime.WithHTTPPathPattern("/v1/booking"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/booking_service.BookingService/CreateBooking", runtime.WithHTTPPathPattern("/v1/booking"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -783,7 +783,7 @@ func RegisterBookingServiceHandlerClient(ctx context.Context, mux *runtime.Serve
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/hotel_booking_service.booking_service.BookingService/CancelBooking", runtime.WithHTTPPathPattern("/v1/booking/{booking_id}"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/booking_service.BookingService/CancelBooking", runtime.WithHTTPPathPattern("/v1/booking/{booking_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -800,7 +800,7 @@ func RegisterBookingServiceHandlerClient(ctx context.Context, mux *runtime.Serve
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/hotel_booking_service.booking_service.BookingService/ModifyBooking", runtime.WithHTTPPathPattern("/v1/booking/{booking_id}"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/booking_service.BookingService/ModifyBooking", runtime.WithHTTPPathPattern("/v1/booking/{booking_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -817,7 +817,7 @@ func RegisterBookingServiceHandlerClient(ctx context.Context, mux *runtime.Serve
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/hotel_booking_service.booking_service.BookingService/GetEmployee", runtime.WithHTTPPathPattern("/v1/employee/{employee_id}"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/booking_service.BookingService/GetEmployee", runtime.WithHTTPPathPattern("/v1/employee/{employee_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -834,7 +834,7 @@ func RegisterBookingServiceHandlerClient(ctx context.Context, mux *runtime.Serve
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/hotel_booking_service.booking_service.BookingService/AddEmployee", runtime.WithHTTPPathPattern("/v1/employee"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/booking_service.BookingService/AddEmployee", runtime.WithHTTPPathPattern("/v1/employee"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -851,7 +851,7 @@ func RegisterBookingServiceHandlerClient(ctx context.Context, mux *runtime.Serve
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/hotel_booking_service.booking_service.BookingService/UpdateEmployee", runtime.WithHTTPPathPattern("/v1/employee/{employee_id}"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/booking_service.BookingService/UpdateEmployee", runtime.WithHTTPPathPattern("/v1/employee/{employee_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -868,7 +868,7 @@ func RegisterBookingServiceHandlerClient(ctx context.Context, mux *runtime.Serve
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/hotel_booking_service.booking_service.BookingService/GetGuestsByBookingID", runtime.WithHTTPPathPattern("/v1/booking/{booking_id}/guests"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/booking_service.BookingService/GetGuestsByBookingID", runtime.WithHTTPPathPattern("/v1/booking/{booking_id}/guests"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -885,7 +885,7 @@ func RegisterBookingServiceHandlerClient(ctx context.Context, mux *runtime.Serve
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/hotel_booking_service.booking_service.BookingService/CreateGuest", runtime.WithHTTPPathPattern("/v1/guests"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/booking_service.BookingService/CreateGuest", runtime.WithHTTPPathPattern("/v1/guests"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -902,7 +902,7 @@ func RegisterBookingServiceHandlerClient(ctx context.Context, mux *runtime.Serve
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/hotel_booking_service.booking_service.BookingService/CreateHouseKeepingRequest", runtime.WithHTTPPathPattern("/v1/housekeeping"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/booking_service.BookingService/CreateHouseKeepingRequest", runtime.WithHTTPPathPattern("/v1/housekeeping"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -919,7 +919,7 @@ func RegisterBookingServiceHandlerClient(ctx context.Context, mux *runtime.Serve
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/hotel_booking_service.booking_service.BookingService/AssignEmployee", runtime.WithHTTPPathPattern("/v1/housekeeping/assign"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/booking_service.BookingService/AssignEmployee", runtime.WithHTTPPathPattern("/v1/housekeeping/assign"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -936,7 +936,7 @@ func RegisterBookingServiceHandlerClient(ctx context.Context, mux *runtime.Serve
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/hotel_booking_service.booking_service.BookingService/SubmitReview", runtime.WithHTTPPathPattern("/v1/review"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/booking_service.BookingService/SubmitReview", runtime.WithHTTPPathPattern("/v1/review"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return

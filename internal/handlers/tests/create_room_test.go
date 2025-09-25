@@ -5,9 +5,9 @@ import (
 	"errors"
 	"testing"
 
+	"booking-service/internal/controllers/room/mocks"
 	"booking-service/internal/generated"
 	"booking-service/internal/handlers"
-	"booking-service/internal/services/room/mocks"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
