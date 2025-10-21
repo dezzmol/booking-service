@@ -1,7 +1,7 @@
 PROTO_DIR := ./api
 EXTERNAL_PROTO_DIR := ./api/external
 GEN_DIR := ./internal/generated
-MODULE_NAME := booking-service/internal/generated
+MODULE_NAME := github.com/dezzmol/booking-service/internal/generated
 
 PROTO_INCLUDES := -I$(PROTO_DIR) -I./vendor
 
@@ -42,4 +42,4 @@ install-deps:
 .PHONE: build
 build:
 	@echo "Building service"
-	@go build -v ./cmd/app/main.go
+	@go build -v ./cmd/main.go

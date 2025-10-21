@@ -1,14 +1,21 @@
 syntax = 'proto3';
-import "booking_models.proto";
-import "google/api/annotations.proto";
-import "google/protobuf/timestamp.proto";
-
-option go_package = "booking-service/internal/generated";
 
 package booking_service;
 
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/dezzmol/booking-service/internal/generated;generated";
+
 service BookingService {
-  rpc CreateRoom(CreateRoomRequest) returns (VoidResponse){
+  rpc CreateHotel(CreateHotelRequest) returns (CreateHotelResponse) {
+    option (google.api.http) = {
+      post: "/v1/hotels"
+      body: "*"
+    };
+  }
+
+  rpc CreateRoom(CreateRoomRequest) returns (CreateRoomResponse) {
     option (google.api.http) = {
       post: "/v1/room"
       body: "*"
@@ -42,49 +49,9 @@ service BookingService {
     };
   }
 
-  rpc GetEmployee(GetEmployeeRequest) returns (GetEmployeeResponse) {
-    option (google.api.http) = {
-      get: "/v1/employee/{employee_id}"
-    };
-  }
-
-  rpc AddEmployee(AddEmployeeRequest) returns (AddEmployeeResponse) {
-    option (google.api.http) = {
-      post: "/v1/employee"
-      body: "*"
-    };
-  }
-
-  rpc UpdateEmployee(UpdateEmployeeRequest) returns (UpdateEmployeeResponse) {
-    option (google.api.http) = {
-      put: "/v1/employee/{employee_id}"
-      body: "*"
-    };
-  }
-
-  rpc GetGuestsByBookingID(GetGuestsByBookingIDRequest) returns (GetGuestsByBookingIDResponse) {
-    option (google.api.http) = {
-      get: "/v1/booking/{booking_id}/guests"
-    };
-  }
-
   rpc CreateGuest(CreateGuestRequest) returns (CreateGuestResponse) {
     option (google.api.http) = {
       post: "/v1/guests"
-      body: "*"
-    };
-  }
-
-  rpc CreateHouseKeepingRequest(CreateHouseKeepingRequestRequest) returns (CreateHouseKeepingRequestResponse) {
-    option (google.api.http) = {
-      post: "/v1/housekeeping"
-      body: "*"
-    };
-  }
-
-  rpc AssignEmployee(AssignEmployeeRequest) returns (AssignEmployeeResponse) {
-    option (google.api.http) = {
-      post: "/v1/housekeeping/assign"
       body: "*"
     };
   }
@@ -97,23 +64,26 @@ service BookingService {
   }
 }
 
-message BookingServiceLink {
-  string rel = 1;
-  string href = 2;
-  string method = 3;
+message CreateHotelRequest {
+  string name = 1;
 }
 
-message VoidResponse {
-  repeated BookingServiceLink links = 1;
+message CreateHotelResponse {
+  Hotel hotel = 1;
 }
 
 message CreateRoomRequest {
-  repeated RoomDTO rooms = 1;
+  message DTO {
+    string number = 1;
+    string type = 2;
+    uint64 hotel_id = 3;
+  }
+
+  repeated DTO dto = 1;
 }
 
 message CreateRoomResponse {
   Room room = 1;
-  repeated BookingServiceLink links = 2;
 }
 
 message UpdateRoomRequest {
@@ -125,20 +95,22 @@ message UpdateRoomRequest {
 
 message UpdateRoomResponse {
   Room room = 1;
-  repeated BookingServiceLink links = 2;
 }
 
 message CreateBookingRequest {
+  message guest {
+    string name = 1;
+  }
+
   uint64 room_id = 1;
   google.protobuf.Timestamp start_date = 2;
   google.protobuf.Timestamp end_date = 3;
   string comment = 4;
-  repeated GuestDTO guests = 5;
+  repeated guest guests = 5;
 }
 
 message CreateBookingResponse {
   Booking booking = 1;
-  repeated BookingServiceLink links = 2;
 }
 
 message CancelBookingRequest {
@@ -146,7 +118,6 @@ message CancelBookingRequest {
 }
 
 message CancelBookingResponse {
-  repeated BookingServiceLink links = 1;
 }
 
 message ModifyBookingRequest {
@@ -157,46 +128,6 @@ message ModifyBookingRequest {
 
 message ModifyBookingResponse {
   Booking booking = 1;
-  repeated BookingServiceLink links = 2;
-}
-
-message GetEmployeeRequest {
-  uint64 employee_id = 1;
-}
-
-message GetEmployeeResponse {
-  Employee employee = 1;
-  repeated BookingServiceLink links = 2;
-}
-
-message AddEmployeeRequest {
-  string name = 1;
-  string role = 2;
-}
-
-message AddEmployeeResponse {
-  Employee employee = 1;
-  repeated BookingServiceLink links = 2;
-}
-
-message UpdateEmployeeRequest {
-  uint64 employee_id = 1;
-  string name = 2;
-  string role = 3;
-}
-
-message UpdateEmployeeResponse {
-  Employee employee = 1;
-  repeated BookingServiceLink links = 2;
-}
-
-message GetGuestsByBookingIDRequest {
-  uint64 booking_id = 1;
-}
-
-message GetGuestsByBookingIDResponse {
-  repeated Guest guests = 1;
-  repeated BookingServiceLink links = 2;
 }
 
 message CreateGuestRequest {
@@ -205,27 +136,6 @@ message CreateGuestRequest {
 
 message CreateGuestResponse {
   Guest guest = 1;
-  repeated BookingServiceLink links = 2;
-}
-
-message CreateHouseKeepingRequestRequest {
-  uint64 room_id = 1;
-  google.protobuf.Timestamp request_time = 2;
-}
-
-message CreateHouseKeepingRequestResponse {
-  HousekeepingRequest request = 1;
-  repeated BookingServiceLink links = 2;
-}
-
-message AssignEmployeeRequest {
-  uint64 request_id = 1;
-  uint64 employee_id = 2;
-}
-
-message AssignEmployeeResponse {
-  HousekeepingRequest request = 1;
-  repeated BookingServiceLink links = 2;
 }
 
 message SubmitReviewRequest {
@@ -237,5 +147,64 @@ message SubmitReviewRequest {
 
 message SubmitReviewResponse {
   Review review = 1;
-  repeated BookingServiceLink links = 2;
+}
+
+message Room {
+  uint64 id = 1;
+  google.protobuf.Timestamp created_at = 2;
+  google.protobuf.Timestamp updated_at = 3;
+  string number = 4;
+  RoomType type = 5;
+  uint64 hotel_id = 6;
+}
+
+message Review {
+  uint64 id = 1;
+  google.protobuf.Timestamp created_at = 2;
+  google.protobuf.Timestamp updated_at = 3;
+  uint64 booking_id = 4;
+  uint64 guest_id = 5;
+  int32 rating = 6;
+  string comment = 7;
+}
+
+message Hotel {
+  uint64 id = 1;
+  google.protobuf.Timestamp created_at = 2;
+  google.protobuf.Timestamp updated_at = 3;
+  string name = 4;
+}
+
+message Guest {
+  uint64 id = 1;
+  google.protobuf.Timestamp created_at = 2;
+  google.protobuf.Timestamp updated_at = 3;
+  string name = 4;
+}
+
+message Booking {
+  uint64 id = 1;
+  google.protobuf.Timestamp created_at = 2;
+  google.protobuf.Timestamp updated_at = 3;
+  uint64 room_id = 4;
+  google.protobuf.Timestamp start_date = 5;
+  google.protobuf.Timestamp end_date = 6;
+  string comment = 7;
+  BookingStatus status = 8;
+  repeated Guest guests = 10;
+}
+
+enum BookingStatus {
+  BOOKING_STATUS_UNKNOWN = 0;
+  BOOKING_STATUS_SUCCESS = 1;
+  BOOKING_STATUS_CANCELLED = 2;
+  BOOKING_STATUS_CONFIRMED = 3;
+}
+
+enum RoomType {
+  ROOM_TYPE_UNKNOWN = 0;
+  ROOM_TYPE_LOW_BUDGET = 1;
+  ROOM_TYPE_MID_BUDGET = 2;
+  ROOM_TYPE_HIGH_BUDGET = 3;
+  ROOM_TYPE_HIGH_PRESIDENT = 4;
 }

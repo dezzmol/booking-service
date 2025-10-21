@@ -10,11 +10,6 @@ import (
 
 //go:generate mockery --disable-version-string --case=underscore --name=RoomService --structname=RoomServiceMock
 
-const (
-	ChunkSize           = 100
-	NotificationMessage = "Информация о номере была обновлена, пожалуйста, просмотрите ее"
-)
-
 func (c *Controller) CreateRooms(ctx context.Context, rooms []entities.RoomDTO) error {
 	baseRooms := make([]entities.Room, len(rooms))
 

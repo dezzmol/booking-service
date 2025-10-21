@@ -3,25 +3,9 @@ package controllers
 import (
 	"context"
 	"database/sql"
-	"errors"
 
 	"booking-service/internal/entities"
 	"booking-service/internal/storage"
-)
-
-var (
-	BookingCancelled                                   = errors.New("booking cancelled")
-	CantRescheduleLaterThanSevenDaysBeforeStartBooking = errors.New("can't reschedule later than seven days before start booking")
-)
-
-const (
-	PAYMENT_PAID      = "paid"
-	PAYMENT_UNPAID    = "unpaid"
-	PAYMENT_CANCELLED = "cancelled"
-
-	BOOKING_PENDING   = "pending"
-	BOOKING_CONFIRM   = "confirmed"
-	BOOKING_CANCELLED = "cancelled"
 )
 
 func (c *Controller) CreateBooking(ctx context.Context, input entities.CreateBookingDTO) (entities.Booking, error) {

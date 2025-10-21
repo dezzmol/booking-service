@@ -1,13 +1,10 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "external/payments_models.proto",
+    "title": "external/payments_service.proto",
     "version": "version not set"
   },
   "tags": [
-    {
-      "name": "NotificationService"
-    },
     {
       "name": "PaymentService"
     }
@@ -19,38 +16,6 @@
     "application/json"
   ],
   "paths": {
-    "/v1/notification": {
-      "post": {
-        "operationId": "NotificationService_SendNotification",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/notificationResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/notificationNotificationDTO"
-            }
-          }
-        ],
-        "tags": [
-          "NotificationService"
-        ]
-      }
-    },
     "/v1/payment": {
       "post": {
         "operationId": "PaymentService_ProcessPayment",
@@ -145,57 +110,6 @@
     }
   },
   "definitions": {
-    "notificationNotificationDTO": {
-      "type": "object",
-      "properties": {
-        "recipientId": {
-          "type": "string",
-          "format": "uint64"
-        },
-        "message": {
-          "type": "string"
-        },
-        "dateSent": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "status": {
-          "type": "string"
-        }
-      }
-    },
-    "notificationNotificationLink": {
-      "type": "object",
-      "properties": {
-        "rel": {
-          "type": "string"
-        },
-        "href": {
-          "type": "string"
-        },
-        "method": {
-          "type": "string"
-        }
-      }
-    },
-    "notificationResponse": {
-      "type": "object",
-      "properties": {
-        "success": {
-          "type": "boolean"
-        },
-        "errorMessage": {
-          "type": "string"
-        },
-        "links": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/notificationNotificationLink"
-          }
-        }
-      }
-    },
     "paymentPayment": {
       "type": "object",
       "properties": {
@@ -219,28 +133,20 @@
           "type": "string",
           "format": "date-time"
         },
-        "paymentDate": {
-          "type": "string",
-          "format": "date-time"
-        },
         "status": {
-          "type": "string"
+          "$ref": "#/definitions/paymentPaymentStatus"
         }
       }
     },
-    "paymentPaymentLink": {
-      "type": "object",
-      "properties": {
-        "rel": {
-          "type": "string"
-        },
-        "href": {
-          "type": "string"
-        },
-        "method": {
-          "type": "string"
-        }
-      }
+    "paymentPaymentStatus": {
+      "type": "string",
+      "enum": [
+        "PAYMENT_STATUS_UNKNOWN",
+        "PAYMENT_STATUS_AUTHORIZED",
+        "PAYMENT_STATUS_SUCCESS",
+        "PAYMENT_STATUS_CANCELLED"
+      ],
+      "default": "PAYMENT_STATUS_UNKNOWN"
     },
     "paymentPaymentsResponse": {
       "type": "object",
@@ -250,13 +156,6 @@
           "items": {
             "type": "object",
             "$ref": "#/definitions/paymentPayment"
-          }
-        },
-        "links": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/paymentPaymentLink"
           }
         }
       }
@@ -282,13 +181,6 @@
         },
         "Error": {
           "type": "string"
-        },
-        "links": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/paymentPaymentLink"
-          }
         }
       }
     },

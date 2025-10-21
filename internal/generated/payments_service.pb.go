@@ -10,7 +10,7 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	_ "google.golang.org/protobuf/types/known/timestamppb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -22,6 +22,58 @@ const (
 	// Verify that runtime/protoimpl is sufficiently up-to-date.
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
+
+type PaymentStatus int32
+
+const (
+	PaymentStatus_PAYMENT_STATUS_UNKNOWN    PaymentStatus = 0
+	PaymentStatus_PAYMENT_STATUS_AUTHORIZED PaymentStatus = 1
+	PaymentStatus_PAYMENT_STATUS_SUCCESS    PaymentStatus = 2
+	PaymentStatus_PAYMENT_STATUS_CANCELLED  PaymentStatus = 3
+)
+
+// Enum value maps for PaymentStatus.
+var (
+	PaymentStatus_name = map[int32]string{
+		0: "PAYMENT_STATUS_UNKNOWN",
+		1: "PAYMENT_STATUS_AUTHORIZED",
+		2: "PAYMENT_STATUS_SUCCESS",
+		3: "PAYMENT_STATUS_CANCELLED",
+	}
+	PaymentStatus_value = map[string]int32{
+		"PAYMENT_STATUS_UNKNOWN":    0,
+		"PAYMENT_STATUS_AUTHORIZED": 1,
+		"PAYMENT_STATUS_SUCCESS":    2,
+		"PAYMENT_STATUS_CANCELLED":  3,
+	}
+)
+
+func (x PaymentStatus) Enum() *PaymentStatus {
+	p := new(PaymentStatus)
+	*p = x
+	return p
+}
+
+func (x PaymentStatus) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (PaymentStatus) Descriptor() protoreflect.EnumDescriptor {
+	return file_external_payments_service_proto_enumTypes[0].Descriptor()
+}
+
+func (PaymentStatus) Type() protoreflect.EnumType {
+	return &file_external_payments_service_proto_enumTypes[0]
+}
+
+func (x PaymentStatus) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use PaymentStatus.Descriptor instead.
+func (PaymentStatus) EnumDescriptor() ([]byte, []int) {
+	return file_external_payments_service_proto_rawDescGZIP(), []int{0}
+}
 
 type ProcessRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -78,8 +130,7 @@ func (x *ProcessRequest) GetAmount() float32 {
 type ProcessResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Status        bool                   `protobuf:"varint,1,opt,name=status,proto3" json:"status,omitempty"`
-	Error         *string                `protobuf:"bytes,2,opt,name=Error,proto3,oneof" json:"Error,omitempty"`
-	Links         []*PaymentLink         `protobuf:"bytes,3,rep,name=links,proto3" json:"links,omitempty"`
+	Error         string                 `protobuf:"bytes,2,opt,name=Error,proto3" json:"Error,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -122,17 +173,10 @@ func (x *ProcessResponse) GetStatus() bool {
 }
 
 func (x *ProcessResponse) GetError() string {
-	if x != nil && x.Error != nil {
-		return *x.Error
+	if x != nil {
+		return x.Error
 	}
 	return ""
-}
-
-func (x *ProcessResponse) GetLinks() []*PaymentLink {
-	if x != nil {
-		return x.Links
-	}
-	return nil
 }
 
 type BookingInfo struct {
@@ -182,7 +226,6 @@ func (x *BookingInfo) GetBookingId() uint64 {
 type PaymentsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Payments      []*Payment             `protobuf:"bytes,1,rep,name=payments,proto3" json:"payments,omitempty"`
-	Links         []*PaymentLink         `protobuf:"bytes,2,rep,name=links,proto3" json:"links,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -224,36 +267,32 @@ func (x *PaymentsResponse) GetPayments() []*Payment {
 	return nil
 }
 
-func (x *PaymentsResponse) GetLinks() []*PaymentLink {
-	if x != nil {
-		return x.Links
-	}
-	return nil
-}
-
-type PaymentLink struct {
+type Payment struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Rel           string                 `protobuf:"bytes,1,opt,name=rel,proto3" json:"rel,omitempty"`
-	Href          string                 `protobuf:"bytes,2,opt,name=href,proto3" json:"href,omitempty"`
-	Method        string                 `protobuf:"bytes,3,opt,name=method,proto3" json:"method,omitempty"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	BookingId     uint64                 `protobuf:"varint,4,opt,name=booking_id,json=bookingId,proto3" json:"booking_id,omitempty"`
+	Amount        float64                `protobuf:"fixed64,5,opt,name=amount,proto3" json:"amount,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Status        PaymentStatus          `protobuf:"varint,9,opt,name=status,proto3,enum=payment.PaymentStatus" json:"status,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *PaymentLink) Reset() {
-	*x = PaymentLink{}
+func (x *Payment) Reset() {
+	*x = Payment{}
 	mi := &file_external_payments_service_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *PaymentLink) String() string {
+func (x *Payment) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*PaymentLink) ProtoMessage() {}
+func (*Payment) ProtoMessage() {}
 
-func (x *PaymentLink) ProtoReflect() protoreflect.Message {
+func (x *Payment) ProtoReflect() protoreflect.Message {
 	mi := &file_external_payments_service_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -265,60 +304,89 @@ func (x *PaymentLink) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use PaymentLink.ProtoReflect.Descriptor instead.
-func (*PaymentLink) Descriptor() ([]byte, []int) {
+// Deprecated: Use Payment.ProtoReflect.Descriptor instead.
+func (*Payment) Descriptor() ([]byte, []int) {
 	return file_external_payments_service_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *PaymentLink) GetRel() string {
+func (x *Payment) GetId() uint64 {
 	if x != nil {
-		return x.Rel
+		return x.Id
 	}
-	return ""
+	return 0
 }
 
-func (x *PaymentLink) GetHref() string {
+func (x *Payment) GetBookingId() uint64 {
 	if x != nil {
-		return x.Href
+		return x.BookingId
 	}
-	return ""
+	return 0
 }
 
-func (x *PaymentLink) GetMethod() string {
+func (x *Payment) GetAmount() float64 {
 	if x != nil {
-		return x.Method
+		return x.Amount
 	}
-	return ""
+	return 0
+}
+
+func (x *Payment) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *Payment) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *Payment) GetStatus() PaymentStatus {
+	if x != nil {
+		return x.Status
+	}
+	return PaymentStatus_PAYMENT_STATUS_UNKNOWN
 }
 
 var File_external_payments_service_proto protoreflect.FileDescriptor
 
 const file_external_payments_service_proto_rawDesc = "" +
 	"\n" +
-	"\x1fexternal/payments_service.proto\x12\apayment\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1eexternal/payments_models.proto\x1a\x1cgoogle/api/annotations.proto\"G\n" +
+	"\x1fexternal/payments_service.proto\x12\apayment\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1cgoogle/api/annotations.proto\"G\n" +
 	"\x0eProcessRequest\x12\x1d\n" +
 	"\n" +
 	"booking_id\x18\x01 \x01(\x04R\tbookingId\x12\x16\n" +
-	"\x06amount\x18\x02 \x01(\x02R\x06amount\"z\n" +
+	"\x06amount\x18\x02 \x01(\x02R\x06amount\"?\n" +
 	"\x0fProcessResponse\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\bR\x06status\x12\x19\n" +
-	"\x05Error\x18\x02 \x01(\tH\x00R\x05Error\x88\x01\x01\x12*\n" +
-	"\x05links\x18\x03 \x03(\v2\x14.payment.PaymentLinkR\x05linksB\b\n" +
-	"\x06_Error\",\n" +
+	"\x06status\x18\x01 \x01(\bR\x06status\x12\x14\n" +
+	"\x05Error\x18\x02 \x01(\tR\x05Error\",\n" +
 	"\vBookingInfo\x12\x1d\n" +
 	"\n" +
-	"booking_id\x18\x01 \x01(\x04R\tbookingId\"l\n" +
+	"booking_id\x18\x01 \x01(\x04R\tbookingId\"@\n" +
 	"\x10PaymentsResponse\x12,\n" +
-	"\bpayments\x18\x01 \x03(\v2\x10.payment.PaymentR\bpayments\x12*\n" +
-	"\x05links\x18\x02 \x03(\v2\x14.payment.PaymentLinkR\x05links\"K\n" +
-	"\vPaymentLink\x12\x10\n" +
-	"\x03rel\x18\x01 \x01(\tR\x03rel\x12\x12\n" +
-	"\x04href\x18\x02 \x01(\tR\x04href\x12\x16\n" +
-	"\x06method\x18\x03 \x01(\tR\x06method2\xb6\x02\n" +
+	"\bpayments\x18\x01 \x03(\v2\x10.payment.PaymentR\bpayments\"\xf6\x01\n" +
+	"\aPayment\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x1d\n" +
+	"\n" +
+	"booking_id\x18\x04 \x01(\x04R\tbookingId\x12\x16\n" +
+	"\x06amount\x18\x05 \x01(\x01R\x06amount\x129\n" +
+	"\n" +
+	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12.\n" +
+	"\x06status\x18\t \x01(\x0e2\x16.payment.PaymentStatusR\x06status*\x84\x01\n" +
+	"\rPaymentStatus\x12\x1a\n" +
+	"\x16PAYMENT_STATUS_UNKNOWN\x10\x00\x12\x1d\n" +
+	"\x19PAYMENT_STATUS_AUTHORIZED\x10\x01\x12\x1a\n" +
+	"\x16PAYMENT_STATUS_SUCCESS\x10\x02\x12\x1c\n" +
+	"\x18PAYMENT_STATUS_CANCELLED\x10\x032\xb6\x02\n" +
 	"\x0ePaymentService\x12[\n" +
 	"\x0eProcessPayment\x12\x17.payment.ProcessRequest\x1a\x18.payment.ProcessResponse\"\x16\x82\xd3\xe4\x93\x02\x10:\x01*\"\v/v1/payment\x12a\n" +
 	"\rCancelPayment\x12\x14.payment.BookingInfo\x1a\x18.payment.ProcessResponse\" \x82\xd3\xe4\x93\x02\x1a*\x18/v1/payment/{booking_id}\x12d\n" +
-	"\x0fGetPaymentsInfo\x12\x14.payment.BookingInfo\x1a\x19.payment.PaymentsResponse\" \x82\xd3\xe4\x93\x02\x1a\x12\x18/v1/payment/{booking_id}B.Z,booking-service/internal/generated;generatedb\x06proto3"
+	"\x0fGetPaymentsInfo\x12\x14.payment.BookingInfo\x1a\x19.payment.PaymentsResponse\" \x82\xd3\xe4\x93\x02\x1a\x12\x18/v1/payment/{booking_id}BAZ?github.com/dezzmol/booking-service/internal/generated;generatedb\x06proto3"
 
 var (
 	file_external_payments_service_proto_rawDescOnce sync.Once
@@ -332,30 +400,33 @@ func file_external_payments_service_proto_rawDescGZIP() []byte {
 	return file_external_payments_service_proto_rawDescData
 }
 
+var file_external_payments_service_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_external_payments_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_external_payments_service_proto_goTypes = []any{
-	(*ProcessRequest)(nil),   // 0: payment.ProcessRequest
-	(*ProcessResponse)(nil),  // 1: payment.ProcessResponse
-	(*BookingInfo)(nil),      // 2: payment.BookingInfo
-	(*PaymentsResponse)(nil), // 3: payment.PaymentsResponse
-	(*PaymentLink)(nil),      // 4: payment.PaymentLink
-	(*Payment)(nil),          // 5: payment.Payment
+	(PaymentStatus)(0),            // 0: payment.PaymentStatus
+	(*ProcessRequest)(nil),        // 1: payment.ProcessRequest
+	(*ProcessResponse)(nil),       // 2: payment.ProcessResponse
+	(*BookingInfo)(nil),           // 3: payment.BookingInfo
+	(*PaymentsResponse)(nil),      // 4: payment.PaymentsResponse
+	(*Payment)(nil),               // 5: payment.Payment
+	(*timestamppb.Timestamp)(nil), // 6: google.protobuf.Timestamp
 }
 var file_external_payments_service_proto_depIdxs = []int32{
-	4, // 0: payment.ProcessResponse.links:type_name -> payment.PaymentLink
-	5, // 1: payment.PaymentsResponse.payments:type_name -> payment.Payment
-	4, // 2: payment.PaymentsResponse.links:type_name -> payment.PaymentLink
-	0, // 3: payment.PaymentService.ProcessPayment:input_type -> payment.ProcessRequest
-	2, // 4: payment.PaymentService.CancelPayment:input_type -> payment.BookingInfo
-	2, // 5: payment.PaymentService.GetPaymentsInfo:input_type -> payment.BookingInfo
-	1, // 6: payment.PaymentService.ProcessPayment:output_type -> payment.ProcessResponse
-	1, // 7: payment.PaymentService.CancelPayment:output_type -> payment.ProcessResponse
-	3, // 8: payment.PaymentService.GetPaymentsInfo:output_type -> payment.PaymentsResponse
-	6, // [6:9] is the sub-list for method output_type
-	3, // [3:6] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	5, // 0: payment.PaymentsResponse.payments:type_name -> payment.Payment
+	6, // 1: payment.Payment.created_at:type_name -> google.protobuf.Timestamp
+	6, // 2: payment.Payment.updated_at:type_name -> google.protobuf.Timestamp
+	0, // 3: payment.Payment.status:type_name -> payment.PaymentStatus
+	1, // 4: payment.PaymentService.ProcessPayment:input_type -> payment.ProcessRequest
+	3, // 5: payment.PaymentService.CancelPayment:input_type -> payment.BookingInfo
+	3, // 6: payment.PaymentService.GetPaymentsInfo:input_type -> payment.BookingInfo
+	2, // 7: payment.PaymentService.ProcessPayment:output_type -> payment.ProcessResponse
+	2, // 8: payment.PaymentService.CancelPayment:output_type -> payment.ProcessResponse
+	4, // 9: payment.PaymentService.GetPaymentsInfo:output_type -> payment.PaymentsResponse
+	7, // [7:10] is the sub-list for method output_type
+	4, // [4:7] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_external_payments_service_proto_init() }
@@ -363,20 +434,19 @@ func file_external_payments_service_proto_init() {
 	if File_external_payments_service_proto != nil {
 		return
 	}
-	file_external_payments_models_proto_init()
-	file_external_payments_service_proto_msgTypes[1].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_external_payments_service_proto_rawDesc), len(file_external_payments_service_proto_rawDesc)),
-			NumEnums:      0,
+			NumEnums:      1,
 			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_external_payments_service_proto_goTypes,
 		DependencyIndexes: file_external_payments_service_proto_depIdxs,
+		EnumInfos:         file_external_payments_service_proto_enumTypes,
 		MessageInfos:      file_external_payments_service_proto_msgTypes,
 	}.Build()
 	File_external_payments_service_proto = out.File

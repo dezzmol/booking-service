@@ -2,27 +2,38 @@ package controllers
 
 import (
 	"context"
+	"database/sql"
+	"time"
 
 	"booking-service/internal/entities"
+	"booking-service/internal/storage"
 )
 
 func (c *Controller) SubmitReview(ctx context.Context, reviewDTO entities.ReviewDTO) (entities.Review, error) {
-	booking, err := s.bookingRepo.FindById(ctx, reviewDTO.BookingID)
+	var reviewRes entities.Review
+	err := storage.WithNoTransaction(ctx, c.sql, func(ctx context.Context, tx *sql.Tx) (errTx error) {
+		booking, errTx := c.ds.FindBookingById(ctx, tx, reviewDTO.BookingID)
+		if errTx != nil {
+			return errTx
+		}
+
+		review := entities.Review{
+			BookingID: booking.ID,
+			Rating:    reviewDTO.Rating,
+			Comment:   reviewDTO.Comment,
+			CreatedAt: time.Now().UTC(),
+			UpdatedAt: time.Now().UTC(),
+		}
+
+		reviewRes, errTx = c.ds.SaveReview(ctx, tx, review)
+		if errTx != nil {
+			return errTx
+		}
+		return nil
+	})
 	if err != nil {
 		return entities.Review{}, err
 	}
 
-	review := entities.Review{
-		BookingID: booking.ID,
-		GuestID:   reviewDTO.GuestID,
-		Rating:    reviewDTO.Rating,
-		Comment:   reviewDTO.Comment,
-	}
-
-	err = s.reviewRepo.Save(ctx, &review)
-	if err != nil {
-		return entities.Review{}, err
-	}
-
-	return review, nil
+	return reviewRes, nil
 }

@@ -16,8 +16,7 @@ type (
 		SaveRoom(ctx context.Context, tx *sql.Tx, room *entities.Room) error
 		SaveAllRooms(ctx context.Context, tx *sql.Tx, rooms []entities.Room) error
 		SaveGuestAndReturnIt(ctx context.Context, tx *sql.Tx, input entities.Guest) (entities.Guest, error)
-		SaveReview(ctx context.Context, tx *sql.Tx, review entities.Review) error
-		FindByGuest(ctx context.Context, tx *sql.Tx, guestID uint64) ([]entities.Review, error)
+		SaveReview(ctx context.Context, tx *sql.Tx, review entities.Review) (entities.Review, error)
 		SaveBooking(ctx context.Context, tx *sql.Tx, booking entities.Booking) error
 		FindBookingById(ctx context.Context, tx *sql.Tx, bookingID uint64) (entities.Booking, error)
 		FindBookingByDate(ctx context.Context, tx *sql.Tx, startDate time.Time, endDate time.Time) ([]entities.Booking, error)

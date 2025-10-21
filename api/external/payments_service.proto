@@ -1,10 +1,9 @@
 syntax = "proto3";
 
 import "google/protobuf/timestamp.proto";
-import "external/payments_models.proto";
 import "google/api/annotations.proto";
 
-option go_package = "booking-service/internal/generated;generated";
+option go_package = "github.com/dezzmol/booking-service/internal/generated;generated";
 
 package payment;
 
@@ -36,8 +35,7 @@ message ProcessRequest {
 
 message ProcessResponse {
   bool status = 1;
-  optional string Error = 2;
-  repeated PaymentLink links = 3;
+  string Error = 2;
 }
 
 message BookingInfo {
@@ -46,11 +44,20 @@ message BookingInfo {
 
 message PaymentsResponse {
   repeated Payment payments = 1;
-  repeated PaymentLink links = 2;
 }
 
-message PaymentLink {
-  string rel = 1;
-  string href = 2;
-  string method = 3;
+message Payment {
+  uint64 id = 1;
+  uint64 booking_id = 4;
+  double amount = 5;
+  google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Timestamp updated_at = 7;
+  PaymentStatus status = 9;
+}
+
+enum PaymentStatus {
+  PAYMENT_STATUS_UNKNOWN = 0;
+  PAYMENT_STATUS_AUTHORIZED = 1;
+  PAYMENT_STATUS_SUCCESS = 2;
+  PAYMENT_STATUS_CANCELLED = 3;
 }

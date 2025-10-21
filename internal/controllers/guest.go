@@ -8,10 +8,6 @@ import (
 	"booking-service/internal/storage"
 )
 
-func (c *Controller) FindGuestsByBookingID(ctx context.Context, bookingID uint) ([]entities.Guest, error) {
-	return s.repo.FindByBookingID(ctx, bookingID)
-}
-
 func (c *Controller) CreateGuest(ctx context.Context, input entities.GuestDTO) (entities.Guest, error) {
 	if input.Name == "" {
 		return entities.Guest{}, entities.ErrNameIsRequired

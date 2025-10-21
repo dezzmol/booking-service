@@ -19,37 +19,27 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	BookingService_CreateRoom_FullMethodName                = "/booking_service.BookingService/CreateRoom"
-	BookingService_UpdateRoom_FullMethodName                = "/booking_service.BookingService/UpdateRoom"
-	BookingService_CreateBooking_FullMethodName             = "/booking_service.BookingService/CreateBooking"
-	BookingService_CancelBooking_FullMethodName             = "/booking_service.BookingService/CancelBooking"
-	BookingService_ModifyBooking_FullMethodName             = "/booking_service.BookingService/ModifyBooking"
-	BookingService_GetEmployee_FullMethodName               = "/booking_service.BookingService/GetEmployee"
-	BookingService_AddEmployee_FullMethodName               = "/booking_service.BookingService/AddEmployee"
-	BookingService_UpdateEmployee_FullMethodName            = "/booking_service.BookingService/UpdateEmployee"
-	BookingService_GetGuestsByBookingID_FullMethodName      = "/booking_service.BookingService/GetGuestsByBookingID"
-	BookingService_CreateGuest_FullMethodName               = "/booking_service.BookingService/CreateGuest"
-	BookingService_CreateHouseKeepingRequest_FullMethodName = "/booking_service.BookingService/CreateHouseKeepingRequest"
-	BookingService_AssignEmployee_FullMethodName            = "/booking_service.BookingService/AssignEmployee"
-	BookingService_SubmitReview_FullMethodName              = "/booking_service.BookingService/SubmitReview"
+	BookingService_CreateHotel_FullMethodName   = "/booking_service.BookingService/CreateHotel"
+	BookingService_CreateRoom_FullMethodName    = "/booking_service.BookingService/CreateRoom"
+	BookingService_UpdateRoom_FullMethodName    = "/booking_service.BookingService/UpdateRoom"
+	BookingService_CreateBooking_FullMethodName = "/booking_service.BookingService/CreateBooking"
+	BookingService_CancelBooking_FullMethodName = "/booking_service.BookingService/CancelBooking"
+	BookingService_ModifyBooking_FullMethodName = "/booking_service.BookingService/ModifyBooking"
+	BookingService_CreateGuest_FullMethodName   = "/booking_service.BookingService/CreateGuest"
+	BookingService_SubmitReview_FullMethodName  = "/booking_service.BookingService/SubmitReview"
 )
 
 // BookingServiceClient is the client API for BookingService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type BookingServiceClient interface {
-	CreateRoom(ctx context.Context, in *CreateRoomRequest, opts ...grpc.CallOption) (*VoidResponse, error)
+	CreateHotel(ctx context.Context, in *CreateHotelRequest, opts ...grpc.CallOption) (*CreateHotelResponse, error)
+	CreateRoom(ctx context.Context, in *CreateRoomRequest, opts ...grpc.CallOption) (*CreateRoomResponse, error)
 	UpdateRoom(ctx context.Context, in *UpdateRoomRequest, opts ...grpc.CallOption) (*UpdateRoomResponse, error)
 	CreateBooking(ctx context.Context, in *CreateBookingRequest, opts ...grpc.CallOption) (*CreateBookingResponse, error)
 	CancelBooking(ctx context.Context, in *CancelBookingRequest, opts ...grpc.CallOption) (*CancelBookingResponse, error)
 	ModifyBooking(ctx context.Context, in *ModifyBookingRequest, opts ...grpc.CallOption) (*ModifyBookingResponse, error)
-	GetEmployee(ctx context.Context, in *GetEmployeeRequest, opts ...grpc.CallOption) (*GetEmployeeResponse, error)
-	AddEmployee(ctx context.Context, in *AddEmployeeRequest, opts ...grpc.CallOption) (*AddEmployeeResponse, error)
-	UpdateEmployee(ctx context.Context, in *UpdateEmployeeRequest, opts ...grpc.CallOption) (*UpdateEmployeeResponse, error)
-	GetGuestsByBookingID(ctx context.Context, in *GetGuestsByBookingIDRequest, opts ...grpc.CallOption) (*GetGuestsByBookingIDResponse, error)
 	CreateGuest(ctx context.Context, in *CreateGuestRequest, opts ...grpc.CallOption) (*CreateGuestResponse, error)
-	CreateHouseKeepingRequest(ctx context.Context, in *CreateHouseKeepingRequestRequest, opts ...grpc.CallOption) (*CreateHouseKeepingRequestResponse, error)
-	AssignEmployee(ctx context.Context, in *AssignEmployeeRequest, opts ...grpc.CallOption) (*AssignEmployeeResponse, error)
 	SubmitReview(ctx context.Context, in *SubmitReviewRequest, opts ...grpc.CallOption) (*SubmitReviewResponse, error)
 }
 
@@ -61,9 +51,19 @@ func NewBookingServiceClient(cc grpc.ClientConnInterface) BookingServiceClient {
 	return &bookingServiceClient{cc}
 }
 
-func (c *bookingServiceClient) CreateRoom(ctx context.Context, in *CreateRoomRequest, opts ...grpc.CallOption) (*VoidResponse, error) {
+func (c *bookingServiceClient) CreateHotel(ctx context.Context, in *CreateHotelRequest, opts ...grpc.CallOption) (*CreateHotelResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(VoidResponse)
+	out := new(CreateHotelResponse)
+	err := c.cc.Invoke(ctx, BookingService_CreateHotel_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bookingServiceClient) CreateRoom(ctx context.Context, in *CreateRoomRequest, opts ...grpc.CallOption) (*CreateRoomResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateRoomResponse)
 	err := c.cc.Invoke(ctx, BookingService_CreateRoom_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -111,70 +111,10 @@ func (c *bookingServiceClient) ModifyBooking(ctx context.Context, in *ModifyBook
 	return out, nil
 }
 
-func (c *bookingServiceClient) GetEmployee(ctx context.Context, in *GetEmployeeRequest, opts ...grpc.CallOption) (*GetEmployeeResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetEmployeeResponse)
-	err := c.cc.Invoke(ctx, BookingService_GetEmployee_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *bookingServiceClient) AddEmployee(ctx context.Context, in *AddEmployeeRequest, opts ...grpc.CallOption) (*AddEmployeeResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AddEmployeeResponse)
-	err := c.cc.Invoke(ctx, BookingService_AddEmployee_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *bookingServiceClient) UpdateEmployee(ctx context.Context, in *UpdateEmployeeRequest, opts ...grpc.CallOption) (*UpdateEmployeeResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateEmployeeResponse)
-	err := c.cc.Invoke(ctx, BookingService_UpdateEmployee_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *bookingServiceClient) GetGuestsByBookingID(ctx context.Context, in *GetGuestsByBookingIDRequest, opts ...grpc.CallOption) (*GetGuestsByBookingIDResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetGuestsByBookingIDResponse)
-	err := c.cc.Invoke(ctx, BookingService_GetGuestsByBookingID_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *bookingServiceClient) CreateGuest(ctx context.Context, in *CreateGuestRequest, opts ...grpc.CallOption) (*CreateGuestResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateGuestResponse)
 	err := c.cc.Invoke(ctx, BookingService_CreateGuest_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *bookingServiceClient) CreateHouseKeepingRequest(ctx context.Context, in *CreateHouseKeepingRequestRequest, opts ...grpc.CallOption) (*CreateHouseKeepingRequestResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateHouseKeepingRequestResponse)
-	err := c.cc.Invoke(ctx, BookingService_CreateHouseKeepingRequest_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *bookingServiceClient) AssignEmployee(ctx context.Context, in *AssignEmployeeRequest, opts ...grpc.CallOption) (*AssignEmployeeResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AssignEmployeeResponse)
-	err := c.cc.Invoke(ctx, BookingService_AssignEmployee_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -195,18 +135,13 @@ func (c *bookingServiceClient) SubmitReview(ctx context.Context, in *SubmitRevie
 // All implementations must embed UnimplementedBookingServiceServer
 // for forward compatibility.
 type BookingServiceServer interface {
-	CreateRoom(context.Context, *CreateRoomRequest) (*VoidResponse, error)
+	CreateHotel(context.Context, *CreateHotelRequest) (*CreateHotelResponse, error)
+	CreateRoom(context.Context, *CreateRoomRequest) (*CreateRoomResponse, error)
 	UpdateRoom(context.Context, *UpdateRoomRequest) (*UpdateRoomResponse, error)
 	CreateBooking(context.Context, *CreateBookingRequest) (*CreateBookingResponse, error)
 	CancelBooking(context.Context, *CancelBookingRequest) (*CancelBookingResponse, error)
 	ModifyBooking(context.Context, *ModifyBookingRequest) (*ModifyBookingResponse, error)
-	GetEmployee(context.Context, *GetEmployeeRequest) (*GetEmployeeResponse, error)
-	AddEmployee(context.Context, *AddEmployeeRequest) (*AddEmployeeResponse, error)
-	UpdateEmployee(context.Context, *UpdateEmployeeRequest) (*UpdateEmployeeResponse, error)
-	GetGuestsByBookingID(context.Context, *GetGuestsByBookingIDRequest) (*GetGuestsByBookingIDResponse, error)
 	CreateGuest(context.Context, *CreateGuestRequest) (*CreateGuestResponse, error)
-	CreateHouseKeepingRequest(context.Context, *CreateHouseKeepingRequestRequest) (*CreateHouseKeepingRequestResponse, error)
-	AssignEmployee(context.Context, *AssignEmployeeRequest) (*AssignEmployeeResponse, error)
 	SubmitReview(context.Context, *SubmitReviewRequest) (*SubmitReviewResponse, error)
 	mustEmbedUnimplementedBookingServiceServer()
 }
@@ -218,7 +153,10 @@ type BookingServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedBookingServiceServer struct{}
 
-func (UnimplementedBookingServiceServer) CreateRoom(context.Context, *CreateRoomRequest) (*VoidResponse, error) {
+func (UnimplementedBookingServiceServer) CreateHotel(context.Context, *CreateHotelRequest) (*CreateHotelResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateHotel not implemented")
+}
+func (UnimplementedBookingServiceServer) CreateRoom(context.Context, *CreateRoomRequest) (*CreateRoomResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateRoom not implemented")
 }
 func (UnimplementedBookingServiceServer) UpdateRoom(context.Context, *UpdateRoomRequest) (*UpdateRoomResponse, error) {
@@ -233,26 +171,8 @@ func (UnimplementedBookingServiceServer) CancelBooking(context.Context, *CancelB
 func (UnimplementedBookingServiceServer) ModifyBooking(context.Context, *ModifyBookingRequest) (*ModifyBookingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ModifyBooking not implemented")
 }
-func (UnimplementedBookingServiceServer) GetEmployee(context.Context, *GetEmployeeRequest) (*GetEmployeeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetEmployee not implemented")
-}
-func (UnimplementedBookingServiceServer) AddEmployee(context.Context, *AddEmployeeRequest) (*AddEmployeeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddEmployee not implemented")
-}
-func (UnimplementedBookingServiceServer) UpdateEmployee(context.Context, *UpdateEmployeeRequest) (*UpdateEmployeeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateEmployee not implemented")
-}
-func (UnimplementedBookingServiceServer) GetGuestsByBookingID(context.Context, *GetGuestsByBookingIDRequest) (*GetGuestsByBookingIDResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetGuestsByBookingID not implemented")
-}
 func (UnimplementedBookingServiceServer) CreateGuest(context.Context, *CreateGuestRequest) (*CreateGuestResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateGuest not implemented")
-}
-func (UnimplementedBookingServiceServer) CreateHouseKeepingRequest(context.Context, *CreateHouseKeepingRequestRequest) (*CreateHouseKeepingRequestResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateHouseKeepingRequest not implemented")
-}
-func (UnimplementedBookingServiceServer) AssignEmployee(context.Context, *AssignEmployeeRequest) (*AssignEmployeeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AssignEmployee not implemented")
 }
 func (UnimplementedBookingServiceServer) SubmitReview(context.Context, *SubmitReviewRequest) (*SubmitReviewResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SubmitReview not implemented")
@@ -276,6 +196,24 @@ func RegisterBookingServiceServer(s grpc.ServiceRegistrar, srv BookingServiceSer
 		t.testEmbeddedByValue()
 	}
 	s.RegisterService(&BookingService_ServiceDesc, srv)
+}
+
+func _BookingService_CreateHotel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateHotelRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BookingServiceServer).CreateHotel(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BookingService_CreateHotel_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BookingServiceServer).CreateHotel(ctx, req.(*CreateHotelRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _BookingService_CreateRoom_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -368,78 +306,6 @@ func _BookingService_ModifyBooking_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
-func _BookingService_GetEmployee_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetEmployeeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BookingServiceServer).GetEmployee(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BookingService_GetEmployee_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BookingServiceServer).GetEmployee(ctx, req.(*GetEmployeeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _BookingService_AddEmployee_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddEmployeeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BookingServiceServer).AddEmployee(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BookingService_AddEmployee_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BookingServiceServer).AddEmployee(ctx, req.(*AddEmployeeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _BookingService_UpdateEmployee_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateEmployeeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BookingServiceServer).UpdateEmployee(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BookingService_UpdateEmployee_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BookingServiceServer).UpdateEmployee(ctx, req.(*UpdateEmployeeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _BookingService_GetGuestsByBookingID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetGuestsByBookingIDRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BookingServiceServer).GetGuestsByBookingID(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BookingService_GetGuestsByBookingID_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BookingServiceServer).GetGuestsByBookingID(ctx, req.(*GetGuestsByBookingIDRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _BookingService_CreateGuest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateGuestRequest)
 	if err := dec(in); err != nil {
@@ -454,42 +320,6 @@ func _BookingService_CreateGuest_Handler(srv interface{}, ctx context.Context, d
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BookingServiceServer).CreateGuest(ctx, req.(*CreateGuestRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _BookingService_CreateHouseKeepingRequest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateHouseKeepingRequestRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BookingServiceServer).CreateHouseKeepingRequest(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BookingService_CreateHouseKeepingRequest_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BookingServiceServer).CreateHouseKeepingRequest(ctx, req.(*CreateHouseKeepingRequestRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _BookingService_AssignEmployee_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AssignEmployeeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BookingServiceServer).AssignEmployee(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BookingService_AssignEmployee_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BookingServiceServer).AssignEmployee(ctx, req.(*AssignEmployeeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -520,6 +350,10 @@ var BookingService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*BookingServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
+			MethodName: "CreateHotel",
+			Handler:    _BookingService_CreateHotel_Handler,
+		},
+		{
 			MethodName: "CreateRoom",
 			Handler:    _BookingService_CreateRoom_Handler,
 		},
@@ -540,32 +374,8 @@ var BookingService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _BookingService_ModifyBooking_Handler,
 		},
 		{
-			MethodName: "GetEmployee",
-			Handler:    _BookingService_GetEmployee_Handler,
-		},
-		{
-			MethodName: "AddEmployee",
-			Handler:    _BookingService_AddEmployee_Handler,
-		},
-		{
-			MethodName: "UpdateEmployee",
-			Handler:    _BookingService_UpdateEmployee_Handler,
-		},
-		{
-			MethodName: "GetGuestsByBookingID",
-			Handler:    _BookingService_GetGuestsByBookingID_Handler,
-		},
-		{
 			MethodName: "CreateGuest",
 			Handler:    _BookingService_CreateGuest_Handler,
-		},
-		{
-			MethodName: "CreateHouseKeepingRequest",
-			Handler:    _BookingService_CreateHouseKeepingRequest_Handler,
-		},
-		{
-			MethodName: "AssignEmployee",
-			Handler:    _BookingService_AssignEmployee_Handler,
 		},
 		{
 			MethodName: "SubmitReview",
