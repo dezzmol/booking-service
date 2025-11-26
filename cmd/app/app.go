@@ -47,11 +47,11 @@ func (a *App) Run() {
 	}
 
 	err = a.initDB()
-	defer a.Stop()
 	if err != nil {
 		log.Printf("failed to initialize database: %s\n", err)
 		return
 	}
+	defer a.Stop()
 
 	a.initClients()
 	a.initControllers()
@@ -59,11 +59,11 @@ func (a *App) Run() {
 
 	go a.initGRPC()
 	go a.initHTTP()
-	err = a.initConsul()
-	if err != nil {
-		log.Printf("failed to initialize consul: %s\n", err)
-		return
-	}
+	//err = a.initConsul()
+	//if err != nil {
+	//	log.Printf("failed to initialize consul: %s\n", err)
+	//	return
+	//}
 	a.initSwagger()
 	log.Println("application started")
 	sigChan := make(chan os.Signal, 1)

@@ -8,22 +8,22 @@ import (
 	"booking-service/internal/entities"
 )
 
-func (s *Storage) SaveHotel(ctx context.Context, tx *sql.Tx, hotel entities.Hotel) error {
-	query := `INSERT INTO hotels (id, name, created_at, updated_at)
-				VALUES ($1, $2, $3, $4)`
+func (s *Storage) SaveHotel(ctx context.Context, tx *sql.Tx, hotel entities.Hotel) (entities.Hotel, error) {
+	query := `INSERT INTO hotels (name, created_at, updated_at)
+				VALUES ($1, $2, $3)
+				RETURNING id`
 
 	err := tx.QueryRowContext(ctx,
 		query,
-		hotel.ID,
 		hotel.Name,
 		time.Now().UTC(),
 		time.Now().UTC(),
-	).Scan()
+	).Scan(&hotel.ID)
 	if err != nil {
-		return err
+		return hotel, err
 	}
 
-	return nil
+	return hotel, nil
 }
 
 func (s *Storage) FindHotelByID(ctx context.Context, tx *sql.Tx, id uint64) (entities.Hotel, error) {

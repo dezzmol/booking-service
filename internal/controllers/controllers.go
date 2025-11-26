@@ -25,6 +25,8 @@ type (
 			ctx context.Context, tx *sql.Tx, roomID uint64, startDate time.Time, endDate time.Time,
 		) ([]entities.Booking, error)
 		IsRoomAvailableForBooking(ctx context.Context, tx *sql.Tx, roomID uint64, startDate, endDate time.Time) (bool, error)
+		SaveHotel(ctx context.Context, tx *sql.Tx, hotel entities.Hotel) (entities.Hotel, error)
+		FindHotelByID(ctx context.Context, tx *sql.Tx, id uint64) (entities.Hotel, error)
 	}
 
 	Controller struct {

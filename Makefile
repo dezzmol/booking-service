@@ -14,7 +14,7 @@ gen-proto:
 		--go-grpc_out=$(GEN_DIR) --go-grpc_opt=module=$(MODULE_NAME) \
 		--grpc-gateway_out=$(GEN_DIR) --grpc-gateway_opt=module=$(MODULE_NAME) \
 		--grpc-gateway_opt=allow_delete_body=true \
-		--openapiv2_out=$(GEN_DIR) --openapiv2_opt=allow_merge=true,merge_file_name=api \
+		--openapiv2_out=$(GEN_DIR) \
 		$(shell find $(PROTO_DIR) -name '*.proto')
 
 	@protoc $(PROTO_INCLUDES) \
@@ -22,7 +22,7 @@ gen-proto:
 		--go-grpc_out=$(GEN_DIR) --go-grpc_opt=module=$(MODULE_NAME) \
 		--grpc-gateway_out=$(GEN_DIR) --grpc-gateway_opt=module=$(MODULE_NAME) \
 		--grpc-gateway_opt=allow_delete_body=true \
-		--openapiv2_out=$(GEN_DIR) --openapiv2_opt=allow_merge=true,merge_file_name=api \
+
 		$(shell find $(EXTERNAL_PROTO_DIR) -name '*.proto')
 	@echo "Proto stubs generated in $(GEN_DIR)"
 

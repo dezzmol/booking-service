@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: booking-service
+  namespace: booking-service
+  labels:
+    app: booking-service
+spec:
+  selector:
+    app: booking-service
+  ports:
+    - name: http
+      port: 8081
+      targetPort: 8081
+      protocol: TCP
+    - name: grpc
+      port: 50050
+      targetPort: 50050
+      protocol: TCP
+  type: ClusterIP  # Для внутреннего доступа в кластере

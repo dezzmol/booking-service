@@ -4,7 +4,7 @@ application:
   grpc:
     port: "50051"
 db:
-  host: "postgres"
+  host: "postgres.booking-service-db.svc.cluster.local"
   name: "db"
   port: "5432"
   user: "user"

@@ -34,7 +34,7 @@ func (a *App) initHTTP() {
 
 	mainMux.Handle("/", mux) // grpc-gateway маршруты
 
-	swaggerJSON, err := os.ReadFile("internal/generated/api.swagger.json")
+	swaggerJSON, err := os.ReadFile("internal/generated/booking_service.swagger.json")
 	if err != nil {
 		log.Fatalf("failed to read swagger file: %v", err)
 	}
@@ -50,7 +50,7 @@ func (a *App) initHTTP() {
 		}
 
 		// Добавляем базовый путь
-		swaggerSpec["basePath"] = "/booking-service"
+		//swaggerSpec["basePath"] = "/booking-service"
 
 		// Сериализуем обратно в JSON
 		modifiedJSON, err := json.Marshal(swaggerSpec)
@@ -64,8 +64,9 @@ func (a *App) initHTTP() {
 
 	mainMux.Handle("/swagger/", httpSwagger.Handler(httpSwagger.URL("/swagger.json")))
 	mainMux.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte("OK"))
+		w.Write([]byte(`{"status": "healthy"}`))
 	})
 
 	log.Printf("HTTP gateway started on %s", a.config.app.Host+":"+a.config.app.Port)

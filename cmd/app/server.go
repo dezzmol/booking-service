@@ -12,6 +12,7 @@ func (a *App) initDB() error {
 		return err
 	}
 	a.PostgreSQL = db
+	a.Storage = storage.New()
 	return nil
 }
 

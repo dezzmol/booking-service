@@ -11,7 +11,7 @@ import (
 
 func (c *Controller) SubmitReview(ctx context.Context, reviewDTO entities.ReviewDTO) (entities.Review, error) {
 	var reviewRes entities.Review
-	err := storage.WithNoTransaction(ctx, c.sql, func(ctx context.Context, tx *sql.Tx) (errTx error) {
+	err := storage.WithWriteTransaction(ctx, c.sql, func(ctx context.Context, tx *sql.Tx) (errTx error) {
 		booking, errTx := c.ds.FindBookingById(ctx, tx, reviewDTO.BookingID)
 		if errTx != nil {
 			return errTx

@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: booking-service
+  namespace: booking-service
+  labels:
+    app: booking-service
+    version: v1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: booking-service
+  template:
+    metadata:
+      labels:
+        app: booking-service
+        version: v1
+    spec:
+      containers:
+        - name: booking-service
+          image: dezzwwi/booking-service:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8081
+              protocol: TCP
+            - name: grpc
+              containerPort: 50050
+              protocol: TCP
+          env:
+            - name: CONFIG_PATH
+              value: "/root/config/config.yaml"
+          # Liveness probe - проверяет жив ли контейнер
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8081
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          # Readiness probe - проверяет готов ли принимать трафик
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8081
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 2
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "200m"
